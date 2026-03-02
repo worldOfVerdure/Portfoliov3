@@ -5,9 +5,11 @@
   --color-surface: #f7f8fa;
   --color-text: #0f172a;
   --color-text-muted: #475569;
-  --color-border: #dbe2ea;
+  --color-border: #4b6480;
   --color-primary: #0f766e;
   --color-primary-contrast: #ffffff;
+  --color-error: #b42318;
+  --color-info: #1d4ed8;
 
   --space-1: 0.4rem;
   --space-2: 0.8rem;
@@ -27,7 +29,7 @@
   --font-size-1: clamp(1.4rem, 1.312rem + 0.2vw, 1.52rem);
   --font-size-2: clamp(1.6rem, 1.52rem + 0.3vw, 1.8rem);
   --font-size-3: clamp(2rem, 1.84rem + 0.6vw, 2.4rem);
-  --font-size-4: clamp(2.4rem, 2.16rem + 1vw, 3.2rem);
+  --font-size-4: clamp(2.4rem, 2.16rem + 1vw, 3.4rem);
   --font-size-5: clamp(3.2rem, 2.72rem + 1.8vw, 4.8rem);
 
   --line-height-tight: 1.2;

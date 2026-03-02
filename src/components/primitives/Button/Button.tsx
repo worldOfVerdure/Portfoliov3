@@ -18,7 +18,12 @@ type ButtonTokenOverrides = {
   '--btn-px'?: string;
   '--btn-py'?: string;
 };
-
+/*
+ButtonProps extends the standard ButtonHTMLAttributes which come from the native React button props
+to include additional props for variant, size, custom classes, CSS variable overrides, and an
+unstyled option. The Button component uses these props to render a styled button element with
+appropriate classes and inline styles based on the provided variant, size, and token overrides.
+*/
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
   size?: ButtonSize;

@@ -5,35 +5,7 @@
 .hero {
   gap: var(--space-5);
 
-  @media (max-width: 420px) {
-    .hero {
-      text-align: center;
-    }
-  }
-}
-
-.eyebrow {
-  font-size: var(--text-caption);
-  color: var(--color-primary);
-  font-weight: 600;
-}
-
-.title {
-  font-size: var(--text-display);
-  line-height: var(--line-height-tight);
-}
-
-.subtitle {
-  max-width: 65ch;
-  font-size: var(--text-body);
-  color: var(--color-text-muted);
-}
-
-.actions {
-  gap: var(--space-3);
-  max-width: fit-content;
-
-  @media (max-width: 420px) {
-    flex-direction: column ;
+  @media (--bp-down-xs) {
+    text-align: center;
   }
 }

@@ -1,0 +1,18 @@
+.stack {
+  --stack-direction: column;
+  --stack-gap: var(--space-3);
+  --stack-align: stretch;
+  --stack-justify: flex-start;
+  --stack-wrap: nowrap;
+
+  display: flex;
+  flex-direction: var(--stack-direction);
+  gap: var(--stack-gap);
+  align-items: var(--stack-align);
+  justify-content: var(--stack-justify);
+  flex-wrap: var(--stack-wrap);
+}
+
+.inline {
+  display: inline-flex;
+}

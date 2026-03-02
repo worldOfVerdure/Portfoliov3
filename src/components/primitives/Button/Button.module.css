@@ -28,9 +28,9 @@
 }
 
 .button:hover:not(:disabled) {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
-
+/* Sizes */
 .sm {
   --btn-px: var(--space-3);
   --btn-py: var(--space-2);
@@ -45,7 +45,7 @@
   --btn-px: var(--space-5);
   --btn-py: var(--space-3);
 }
-
+/* Variants */
 .primary {
   --btn-bg: var(--color-primary);
   --btn-color: var(--color-primary-contrast);
