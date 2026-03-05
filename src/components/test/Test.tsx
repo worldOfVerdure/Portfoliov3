@@ -11,7 +11,7 @@ export const Test = () => {
       <CustomButtons />
       <CustomLinks />
       <TestForm />
-      <AnotherTestForm />
+      {/* <AnotherTestForm /> */}
     </>
   );
 }
