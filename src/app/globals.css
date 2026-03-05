@@ -8,8 +8,8 @@
   --color-border: #4b6480;
   --color-primary: #0f766e;
   --color-primary-contrast: #ffffff;
-  --color-primary-elevation-1: #0f766e;
-  --color-primary-elevation-2: #0b665f;
+  --color-primary-elevation-1: #2ac7ba;
+  --color-primary-elevation-2: #30a79d;
   --color-primary-elevation-3: #085650;
   --color-primary-elevation-4: #054741;
   --color-primary-elevation-5: #033833;
@@ -18,7 +18,10 @@
   --color-primary-elevation-8: #000f0e;
   --color-primary-elevation-9: #000504;
   --color-primary-elevation-10: #000101;
-  --color-error: #b42318;
+  --color-error-light: #fda29b;
+  --color-error-medium: #f04438;
+  --color-error-dark: #b42318;
+  --color-error: var(--color-error-medium);
   --color-info: #1d4ed8;
 
   --space-1: 0.4rem;
@@ -32,6 +35,7 @@
   --radius-sm: 0.6rem;
   --radius-md: 0.8rem;
   --radius-lg: 1.2rem;
+  --radius-xl: 1.6rem;
 
   --container-max: 115.2rem;
 

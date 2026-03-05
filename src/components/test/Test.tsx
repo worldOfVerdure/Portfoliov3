@@ -1,7 +1,8 @@
+import { AnotherTestForm } from '@/components/test/anotherTestForm';
 import { Header } from '@/components/test/header';
-import { TestContactForm } from './testContactForm';
 import { CustomButtons } from '@/components/test/customButtons';
 import { CustomLinks } from '@/components/test/customLinks';
+import { TestForm } from '@/components/test/testForm';
 
 export const Test = () => {
   return (
@@ -9,7 +10,8 @@ export const Test = () => {
       <Header />
       <CustomButtons />
       <CustomLinks />
-      <TestContactForm />
+      <TestForm />
+      <AnotherTestForm />
     </>
   );
 }

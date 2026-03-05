@@ -5,6 +5,28 @@
   width: min(100%, 64rem);
 }
 
+.rulebookSwitcher {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.rulebookLabel {
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.rulebookSelect {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+  padding: var(--space-1) var(--space-2);
+}
+
 .fieldset {
   display: grid;
   gap: var(--space-4);
@@ -28,6 +50,7 @@
 
 .fieldHeader {
   display: flex;
+  flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--space-3);
@@ -88,10 +111,10 @@
 }
 
 .message {
-  font-size: var(--text-caption);
-  color: var(--color-error);
   margin: 0;
   min-height: 1lh;
+  font-size: var(--text-caption);
+  color: var(--color-error);
 }
 
 .field[data-validation='focus'] .message {
@@ -100,7 +123,7 @@
 
 .actions {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 .submit {
