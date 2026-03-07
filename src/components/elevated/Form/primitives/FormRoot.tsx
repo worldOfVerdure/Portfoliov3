@@ -9,7 +9,7 @@ import {
   FormThemeContext,
   FormThemeContextValue
 } from '../context/formContext';
-import { FormErrors, FormRootProps, FormTouchedFields } from '../helpers/types';
+import type { FormErrors, FormRootProps, FormTouchedFields } from '../helpers/types';
 
 export function FormRoot({
   className,
@@ -21,11 +21,17 @@ export function FormRoot({
   children,
   ...props
 }: FormRootProps) {
+  
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [touchedFields, setTouchedFields] = useState<FormTouchedFields>({});
   const [errors, setErrors] = useState<FormErrors>({});
   const formId = useId().replace(/:/g, '');
-
+  /*Populates the state context value with all necessary state and handlers, memoizing to prevent
+  unnecessary re-renders of consuming components. Note that the handlers are defined inline here to
+  have access to the form state setters, and are included in the memo dependencies to ensure they
+  update when the state they rely on changes. The theme context value is also memoized, but only
+  includes the classes since that's the only theme‑related value we have at the moment.
+  */
   const stateValue = useMemo<FormStateContextValue>(
     () => ({
       formId,

@@ -1,6 +1,6 @@
 import { FocusEvent, InvalidEvent } from 'react';
 import { useFormState } from '../context/formContext';
-import { SharedControlProps } from '../helpers/types';
+import { type SharedControlProps } from '../helpers/types';
 
 const isEmpty = (value: string) => value.trim().length === 0;
 
