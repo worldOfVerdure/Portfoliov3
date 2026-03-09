@@ -29,7 +29,7 @@ export function TextareaControl({
   const { classes } = useFormTheme();
   const { formId, errors } = useFormState();
   const fieldState = useFieldState(name);
-  const handlers = useControlValidationHandlers(name, { className, name, onFocus, onBlur, onInvalid });
+  const handlers = useControlValidationHandlers(name);
   const messageId = getMessageId(formId, name);
 
   return (

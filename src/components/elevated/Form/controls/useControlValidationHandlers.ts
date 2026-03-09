@@ -1,10 +1,9 @@
-import { FocusEvent, InvalidEvent } from 'react';
+import type { FocusEvent, InvalidEvent } from 'react';
 import { useFormState } from '../context/formContext';
-import { type SharedControlProps } from '../helpers/types';
 
 const isEmpty = (value: string) => value.trim().length === 0;
 
-export const useControlValidationHandlers = (name: string, props: SharedControlProps) => {
+export const useControlValidationHandlers = (name: string) => {
   const {
     focusedField,
     setFocusedField,
@@ -14,9 +13,8 @@ export const useControlValidationHandlers = (name: string, props: SharedControlP
     rulebook
   } = useFormState();
 
-  const handleFocus = (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleFocus = () => {
     setFocusedField(name);
-    props.onFocus?.(event);
   };
 
   const handleBlur = (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -29,7 +27,6 @@ export const useControlValidationHandlers = (name: string, props: SharedControlP
     if (shouldClear) {
       setFieldTouched(name, false);
       setFieldError(name, null);
-      props.onBlur?.(event);
       return;
     }
 
@@ -42,7 +39,6 @@ export const useControlValidationHandlers = (name: string, props: SharedControlP
         validationMessages
       })
     );
-    props.onBlur?.(event);
   };
 
   const handleInvalid = (event: InvalidEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -55,7 +51,6 @@ export const useControlValidationHandlers = (name: string, props: SharedControlP
         validationMessages
       })
     );
-    props.onInvalid?.(event);
   };
 
   return {

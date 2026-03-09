@@ -11,15 +11,10 @@ import {
   FormValidationMessages,
   RulebookGetValidationMessageArgs
 } from '@/components/elevated/Form/helpers/types';
-
+//*See below for explanation
 const getMessageFromValidity = (
   fieldName: string,
   control: HTMLInputElement | HTMLTextAreaElement,
-  /*
-  Optional so the rulebook can work in both modes:
-  1) With custom per-field messages provided.
-  2) Without any custom message config (fallback to native)
-  */
   validationMessages?: FormValidationMessages
 ) => {
   if (control.validity.valid) {
@@ -48,19 +43,7 @@ const getMessageFromValidity = (
 };
 
 export const contactRulebook: FormBehaviorRulebook = {
-  /*
-    getValidationMessage is responsible for determining the validation message to show for a given
-    field based on its current validity state. It checks the validity of the control and returns the
-    appropriate message based on the type of validation error. It first looks for custom messages
-    provided in the validationMessages config for the specific field and error type, and if none are
-    found, it falls back to the browser's default validation message or a generic message.
-
-    The reason we pass fieldName, control, and validationMessages as arguments is to give the
-    rulebook the necessary context to determine the correct message. The rulebook is designed to be
-    flexible and work with different forms and validation configurations, so it needs access to the
-    field's name, the actual form control element to check its validity, and any custom validation
-    messages that may have been provided.
-  */
+  //~See below for explanation
   getValidationMessage: ({ fieldName, control, validationMessages }: RulebookGetValidationMessageArgs) =>
     getMessageFromValidity(fieldName, control, validationMessages),
   getFieldState: ({ fieldName, focusedField, touchedFields, errors }) => {
@@ -83,3 +66,23 @@ export const contactRulebook: FormBehaviorRulebook = {
   },
   shouldClearOnEmptyBlur: (value: string) => value.trim().length === 0
 };
+
+/*
+  *Optional so the rulebook can work in both modes:
+  1) With custom per-field messages provided.
+  2) Without any custom message config (fallback to native)
+*/
+
+/*
+  ~getValidationMessage is responsible for determining the validation message to show for a given
+  field based on its current validity state. It checks the validity of the control and returns the
+  appropriate message based on the type of validation error. It first looks for custom messages
+  provided in the validationMessages config for the specific field and error type, and if none are
+  found, it falls back to the browser's default validation message or a generic message.
+
+  The reason we pass fieldName, control, and validationMessages as arguments is to give the
+  rulebook the necessary context to determine the correct message. The rulebook is designed to be
+  flexible and work with different forms and validation configurations, so it needs access to the
+  field's name, the actual form control element to check its validity, and any custom validation
+  messages that may have been provided.
+*/
