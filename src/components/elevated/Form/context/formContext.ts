@@ -15,8 +15,8 @@ export type FormStateContextValue = {
   validationMessages?: FormRootProps['validationMessages'];
   rulebook: FormBehaviorRulebook;
   setFocusedField: (fieldName: string | null) => void;
-  setFieldTouched: (fieldName: string, touched: boolean) => void;
-  setFieldError: (fieldName: string, message: string | null) => void;
+  setTouchedWrapper: (fieldName: string, touched: boolean) => void;
+  setErrorWrapper: (fieldName: string, message: string | null) => void;
 };
 
 export type FormThemeContextValue = {

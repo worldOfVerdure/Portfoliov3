@@ -1,4 +1,4 @@
-export { EmailControl } from './EmailControl';
-export { TelControl } from './TelControl';
-export { TextControl } from './TextControl';
-export { TextareaControl } from './TextareaControl';
+export { EmailControl } from './uncontrolled/EmailControl';
+export { TelControl } from './uncontrolled/TelControl';
+export { TextControl } from './uncontrolled/TextControl';
+export { TextareaControl } from './uncontrolled/TextareaControl';

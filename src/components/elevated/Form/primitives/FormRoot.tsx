@@ -1,3 +1,5 @@
+//!Important note: “touched” means “this field has entered validation flow,” not strictly “user
+//!blurred it.”
 'use client';
 
 import * as Form from '@radix-ui/react-form';
@@ -41,17 +43,29 @@ export function FormRoot({
       validationMessages,
       rulebook,
       setFocusedField,
-      setFieldTouched: (fieldName, touched) => {
-        setTouchedFields((previous) => ({
-          ...previous,
-          [fieldName]: touched
-        }));
+      setTouchedWrapper: (fieldName, touched) => {
+        setTouchedFields((previous) => {
+          if (previous[fieldName] === touched) {
+            return previous;
+          }
+
+          return {
+            ...previous,
+            [fieldName]: touched
+          };
+        });
       },
-      setFieldError: (fieldName, message) => {
-        setErrors((previous) => ({
-          ...previous,
-          [fieldName]: message
-        }));
+      setErrorWrapper: (fieldName, message) => {
+        setErrors((previous) => {
+          if (previous[fieldName] === message) {
+            return previous;
+          }
+
+          return {
+            ...previous,
+            [fieldName]: message
+          };
+        });
       }
     }),
     [errors, focusedField, formId, touchedFields, validationMessages, rulebook]
