@@ -54,6 +54,7 @@ export type RulebookGetFieldMessageArgs = {
 };
 
 export type FormBehaviorRulebook = {
+  rulebookName: string;
   getValidationMessage: (args: RulebookGetValidationMessageArgs) => string | null;
   getFieldState: (args: RulebookGetFieldStateArgs) => FormFieldState;
   getFieldMessage: (args: RulebookGetFieldMessageArgs) => string;

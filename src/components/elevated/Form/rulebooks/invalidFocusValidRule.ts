@@ -42,7 +42,8 @@ const getMessageFromValidity = (
   return control.validationMessage || 'Please check this field';
 };
 
-export const contactRulebook: FormBehaviorRulebook = {
+export const invalidFocusValid: FormBehaviorRulebook = {
+  rulebookName: ' focus + valid + invalid ',
   //~See below for explanation
   getValidationMessage: ({ fieldName, control, validationMessages }: RulebookGetValidationMessageArgs) =>
     getMessageFromValidity(fieldName, control, validationMessages),
@@ -65,7 +66,7 @@ export const contactRulebook: FormBehaviorRulebook = {
     return errors[fieldName] ?? '\u00A0';
   },
   shouldClearOnEmptyBlur: (value: string) => value.trim().length === 0
-};
+} as const;
 
 /*
   *Optional so the rulebook can work in both modes:

@@ -16,8 +16,7 @@ import {
   TextareaControl
 } from '@/components/elevated/Form';
 import { SectionHeading } from '../reuseables';
-import { contactRulebook } from './rulebooks/contactRulebook';
-import { gentleRulebook } from './rulebooks/gentleRulebook';
+import { idleInvalidRule, invalidFocusValid } from '@/components/elevated/Form/rulebooks';
 import styles from './styles/testForm.module.css';
 
 const validationMessages = {
@@ -35,8 +34,9 @@ const validationMessages = {
 };
 
 export const TestForm = () => {
-  const [rulebookKey, setRulebookKey] = useState<'contact' | 'gentle'>('contact');
-  const activeRulebook = rulebookKey === 'contact' ? contactRulebook : gentleRulebook;
+  const [rulebookName, setRulebookName] = useState(invalidFocusValid.rulebookName);
+  const activeRulebook =
+    rulebookName === invalidFocusValid.rulebookName ? invalidFocusValid : idleInvalidRule;
 
   return (
     <>
@@ -48,11 +48,11 @@ export const TestForm = () => {
         <select
           className={styles.rulebookSelect}
           id="rulebook-select"
-          value={rulebookKey}
-          onChange={(event) => setRulebookKey(event.target.value as 'contact' | 'gentle')}
+          value={rulebookName}
+          onChange={(event) => setRulebookName(event.target.value)}
         >
-          <option value="contact">Contact (focus + valid + invalid)</option>
-          <option value="gentle">Gentle (idle + invalid only)</option>
+          <option value={invalidFocusValid.rulebookName}>({invalidFocusValid.rulebookName})</option>
+          <option value={idleInvalidRule.rulebookName}>({idleInvalidRule.rulebookName})</option>
         </select>
       </div>
       <FormRoot
