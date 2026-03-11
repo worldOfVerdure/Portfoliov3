@@ -2,6 +2,7 @@ import { CustomStackContent } from '../reuseables/customStackContent/CustomStack
 import { Link } from '@/components/primitives/Link';
 import { SectionHeading } from '@/components/test/reuseables/sectionHeading/SectionHeading';
 import styles from './styles/customLinks.module.css';
+import { serialize } from 'v8';
 
 export const CustomLinks = () => {
   return (
@@ -38,6 +39,16 @@ export const CustomLinks = () => {
           rel="noopener noreferrer"
         >
           TypeScript
+        </Link>
+        <Link
+          className={`${styles.actionsContent} ${styles.customLink}`}
+          size="lg"
+          href="https://www.radix-ui.com/docs/primitives/overview/introduction"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="buttonGhost"
+        >
+          Radix
         </Link>
         <Link
           className={styles.actionsContent}
