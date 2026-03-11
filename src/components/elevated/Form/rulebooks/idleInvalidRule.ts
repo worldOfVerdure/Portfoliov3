@@ -38,7 +38,7 @@ export const idleInvalidRule: FormBehaviorRulebook = {
   rulebookName: ' idle + invalid only ',
   getValidationMessage: ({ fieldName, control, validationMessages }: RulebookGetValidationMessageArgs) =>
     getMessageFromValidity(fieldName, control, validationMessages),
-  getFieldState: ({ fieldName, touchedFields, errors }) => {
+  getValidationFlowStatus: ({ fieldName, touchedFields, errors }) => {
     if (!touchedFields[fieldName]) {
       return 'idle';
     }

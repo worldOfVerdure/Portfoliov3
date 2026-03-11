@@ -11,8 +11,8 @@ import {
   FormValidationMessages,
   RulebookGetValidationMessageArgs
 } from '@/components/elevated/Form/helpers/types';
-//*See below for explanation
-const getMessageFromValidity = (
+
+const getMessageFromValidity = ( //*See below for explanation
   fieldName: string,
   control: HTMLInputElement | HTMLTextAreaElement,
   validationMessages?: FormValidationMessages
@@ -44,10 +44,9 @@ const getMessageFromValidity = (
 
 export const invalidFocusValid: FormBehaviorRulebook = {
   rulebookName: ' focus + valid + invalid ',
-  //~See below for explanation
   getValidationMessage: ({ fieldName, control, validationMessages }: RulebookGetValidationMessageArgs) =>
-    getMessageFromValidity(fieldName, control, validationMessages),
-  getFieldState: ({ fieldName, focusedField, touchedFields, errors }) => {
+    getMessageFromValidity(fieldName, control, validationMessages),//~See below for explanation
+  getValidationFlowStatus: ({ fieldName, focusedField, touchedFields, errors }) => {
     if (focusedField === fieldName) {
       return 'focus';
     }

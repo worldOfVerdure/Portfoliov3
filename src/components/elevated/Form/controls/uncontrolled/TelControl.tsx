@@ -1,4 +1,4 @@
-import { BaseInputControl, InputControlProps } from './baseInputControl';
+import { BaseInputControl, InputControlProps } from './BaseInputControl';
 
 export function TelControl(props: InputControlProps) {
   return <BaseInputControl {...props} type="tel" />;

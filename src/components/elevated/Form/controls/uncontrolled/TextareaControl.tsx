@@ -4,7 +4,7 @@ import { cn } from '@/lib/cn';
 import { useFormState, useFormTheme } from '../../context/formContext';
 import { composeHandlers } from '../../helpers/composeHandlers';
 import { getControlId, getMessageId } from '../../helpers/ids';
-import { useFieldState } from '../../helpers/state';
+import { useValidationFlowStatus } from '../../helpers/state';
 import { SharedControlProps } from '../../helpers/types';
 import { useControlValidationHandlers } from './useControlValidationHandlers';
 
@@ -28,7 +28,7 @@ export function TextareaControl({
 }: TextareaControlProps) {
   const { classes } = useFormTheme();
   const { formId, errors } = useFormState();
-  const fieldState = useFieldState(name);
+  const fieldState = useValidationFlowStatus(name);
   const handlers = useControlValidationHandlers(name);
   const messageId = getMessageId(formId, name);
 

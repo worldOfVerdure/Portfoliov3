@@ -83,11 +83,11 @@
   line-height: var(--line-height-normal);
 }
 
-.control:focus-visible,
+/* .control:focus-visible,
 .textarea:focus-visible {
   outline: 2px solid var(--color-info);
   outline-offset: 1px;
-}
+} */
 
 .control[data-validation='focus'],
 .textarea[data-validation='focus'] {

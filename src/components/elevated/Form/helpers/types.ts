@@ -41,7 +41,7 @@ export type RulebookGetValidationMessageArgs = {
   validationMessages?: FormValidationMessages;
 };
 
-export type RulebookGetFieldStateArgs = {
+export type RulebookGetValidationFlowStatusArgs = {
   fieldName: string;
   focusedField: string | null;
   touchedFields: FormTouchedFields;
@@ -56,7 +56,7 @@ export type RulebookGetFieldMessageArgs = {
 export type FormBehaviorRulebook = {
   rulebookName: string;
   getValidationMessage: (args: RulebookGetValidationMessageArgs) => string | null;
-  getFieldState: (args: RulebookGetFieldStateArgs) => FormFieldState;
+  getValidationFlowStatus: (args: RulebookGetValidationFlowStatusArgs) => FormFieldState;
   getFieldMessage: (args: RulebookGetFieldMessageArgs) => string;
   shouldClearOnEmptyBlur?: (value: string) => boolean;
 };
