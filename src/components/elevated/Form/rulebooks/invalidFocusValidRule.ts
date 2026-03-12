@@ -47,9 +47,9 @@ export const invalidFocusValid: FormBehaviorRulebook = {
   getValidationMessage: ({ fieldName, control, validationMessages }: RulebookGetValidationMessageArgs) =>
     getMessageFromValidity(fieldName, control, validationMessages),//~See below for explanation
   getValidationFlowStatus: ({ fieldName, focusedField, touchedFields, errors }) => {
-    if (focusedField === fieldName) {
-      return 'focus';
-    }
+    // if (focusedField === fieldName) {
+    //   return 'focus';
+    // }
 
     if (!touchedFields[fieldName]) {
       return 'idle';

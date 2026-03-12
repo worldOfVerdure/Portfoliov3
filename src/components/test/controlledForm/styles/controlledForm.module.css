@@ -103,11 +103,23 @@
   outline-offset: 2px;
 }
 
+.control[data-validation='valid']:focus-visible,
+.textarea[data-validation='valid']:focus-visible {
+  border-color: var(--color-primary-elevation-3);
+  outline: 2px solid var(--color-primary-elevation-3);
+}
+
 .control[data-validation='invalid'],
 .textarea[data-validation='invalid'] {
   border-color: var(--color-error);
   outline: 2px solid var(--color-error);
   outline-offset: 2px;
+}
+
+.control[data-validation='invalid']:focus-visible,
+.textarea[data-validation='invalid']:focus-visible {
+  border-color: var(--color-error-dark);
+  outline: 2px solid var(--color-error-dark);
 }
 
 .message {

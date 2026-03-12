@@ -19,9 +19,12 @@ import { SectionHeading } from '../reuseables';
 import { idleInvalidRule, invalidFocusValid } from '@/components/elevated/Form/rulebooks';
 import styles from './styles/testForm.module.css';
 
+const namePattern = "^[A-Za-z ,.'\\-]+$";
+
 const validationMessages = {
   name: {
-    valueMissing: 'Please enter your name'
+    valueMissing: 'Please enter your name',
+    patternMismatch: "Use letters and optional spaces, apostrophes, or hyphens only"
   },
   email: {
     valueMissing: 'Please enter your email',
@@ -40,7 +43,7 @@ export const TestForm = () => {
 
   return (
     <>
-      <SectionHeading>Forms</SectionHeading>
+      <SectionHeading>Uncontrolled Forms</SectionHeading>
       <div className={styles.rulebookSwitcher}>
         <label className={styles.rulebookLabel} htmlFor="rulebook-select">
           Rulebook
@@ -79,7 +82,7 @@ export const TestForm = () => {
               <FormLabel fieldName="name">Name *</FormLabel>
               <FormMessage fieldName="name" />
             </FormFieldHeader>
-            <TextControl name="name" required autoComplete="name" />
+            <TextControl name="name" required autoComplete="name" pattern={namePattern} />
           </FormField>
 
           <FormField name="email">

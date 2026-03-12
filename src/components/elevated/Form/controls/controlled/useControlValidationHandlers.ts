@@ -1,4 +1,4 @@
-import type { FocusEvent, InvalidEvent } from 'react';
+import type { ChangeEvent, FocusEvent, InvalidEvent } from 'react';
 import { useFormState } from '../../context/formContext';
 
 const isEmpty = (value: string) => value.trim().length === 0;
@@ -42,6 +42,18 @@ export const useControlValidationHandlers = (name: string) => {
     );
   };
 
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setTouchedWrapper(name, true);
+    setErrorWrapper(
+      name,
+      rulebook.getValidationMessage({
+        fieldName: name,
+        control: event.currentTarget,
+        validationMessages
+      })
+    );
+  };
+
   const handleInvalid = (event: InvalidEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setTouchedWrapper(name, true);
     setErrorWrapper(
@@ -57,6 +69,7 @@ export const useControlValidationHandlers = (name: string) => {
   return {
     onFocus: handleFocus,
     onBlur: handleBlur,
+    onChange: handleChange,
     onInvalid: handleInvalid
   };
 };

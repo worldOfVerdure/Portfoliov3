@@ -1,8 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import { Button } from '@/components/primitives/Button';
 import {
-  EmailControl,
   Fieldset,
   FormActions,
   FormField,
@@ -10,19 +10,19 @@ import {
   FormLabel,
   FormLegend,
   FormMessage,
-  FormRoot,
-  TelControl,
-  TextControl,
-  TextareaControl
+  FormRoot
 } from '@/components/elevated/Form';
-import { idleInvalidRule, invalidFocusValid } from '@/components/elevated/Form/rulebooks';
+import { CEmailControl, CTextControl, CTextareaControl } from '@/components/elevated/Form/controls';
 import { SectionHeading } from '../reuseables';
-import styles from './styles/anotherTestForm.module.css';
-import { useState } from 'react';
+import { idleInvalidRule, invalidFocusValid } from '@/components/elevated/Form/rulebooks';
+import styles from './styles/controlledForm.module.css';
+
+const namePattern = "^[A-Za-z ,.'\\-]+$";
 
 const validationMessages = {
   name: {
-    valueMissing: 'Please enter your name'
+    valueMissing: 'Please enter your name',
+    patternMismatch: "Use letters and optional spaces, apostrophes, or hyphens only"
   },
   email: {
     valueMissing: 'Please enter your email',
@@ -34,26 +34,26 @@ const validationMessages = {
   }
 };
 
-export const AnotherTestForm = () => {
+export const ControlledForm = () => {
   const [rulebookName, setRulebookName] = useState(invalidFocusValid.rulebookName);
   const activeRulebook =
     rulebookName === invalidFocusValid.rulebookName ? invalidFocusValid : idleInvalidRule;
 
   return (
     <>
-      <SectionHeading>Another Form</SectionHeading>
+      <SectionHeading>Controlled Forms</SectionHeading>
       <div className={styles.rulebookSwitcher}>
-        <label className={styles.rulebookLabel} htmlFor="rulebook-select">
+        <label className={styles.rulebookLabel} htmlFor="controlled-rulebook-select">
           Rulebook
         </label>
         <select
           className={styles.rulebookSelect}
-          id="rulebook-select"
+          id="controlled-rulebook-select"
           value={rulebookName}
           onChange={(event) => setRulebookName(event.target.value)}
         >
-          <option value={invalidFocusValid.rulebookName}>Contact ({invalidFocusValid.rulebookName})</option>
-          <option value={idleInvalidRule.rulebookName}>Idle Invalid ({idleInvalidRule.rulebookName})</option>
+          <option value={invalidFocusValid.rulebookName}>({invalidFocusValid.rulebookName})</option>
+          <option value={idleInvalidRule.rulebookName}>({idleInvalidRule.rulebookName})</option>
         </select>
       </div>
       <FormRoot
@@ -80,7 +80,7 @@ export const AnotherTestForm = () => {
               <FormLabel fieldName="name">Name *</FormLabel>
               <FormMessage fieldName="name" />
             </FormFieldHeader>
-            <TextControl name="name" required autoComplete="name" />
+            <CTextControl name="name" required autoComplete="name" pattern={namePattern} />
           </FormField>
 
           <FormField name="email">
@@ -88,15 +88,7 @@ export const AnotherTestForm = () => {
               <FormLabel fieldName="email">Email *</FormLabel>
               <FormMessage fieldName="email" />
             </FormFieldHeader>
-            <EmailControl name="email" required autoComplete="email" />
-          </FormField>
-
-          <FormField name="tel">
-            <FormFieldHeader>
-              <FormLabel fieldName="tel">Phone</FormLabel>
-              <FormMessage fieldName="tel" />
-            </FormFieldHeader>
-            <TelControl name="tel" autoComplete="tel" />
+            <CEmailControl name="email" required autoComplete="email" />
           </FormField>
 
           <FormField name="message">
@@ -104,7 +96,7 @@ export const AnotherTestForm = () => {
               <FormLabel fieldName="message">Message *</FormLabel>
               <FormMessage fieldName="message" />
             </FormFieldHeader>
-            <TextareaControl name="message" required minLength={10} />
+            <CTextareaControl name="message" required minLength={10} />
           </FormField>
         </Fieldset>
 
@@ -117,4 +109,3 @@ export const AnotherTestForm = () => {
     </>
   );
 };
-

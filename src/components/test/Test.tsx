@@ -1,8 +1,8 @@
-// import { AnotherTestForm } from '@/components/test/anotherTestForm';
 import { Header } from '@/components/test/header';
 import { CustomButtons } from '@/components/test/customButtons';
 import { CustomLinks } from '@/components/test/customLinks';
 import { TestForm } from '@/components/test/testForm';
+import { ControlledForm } from '@/components/test/controlledForm';
 
 export const Test = () => {
   return (
@@ -11,7 +11,7 @@ export const Test = () => {
       <CustomButtons />
       <CustomLinks />
       <TestForm />
-      {/* <AnotherTestForm /> */}
+      <ControlledForm />
     </>
   );
 }
