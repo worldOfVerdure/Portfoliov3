@@ -1,0 +1,9 @@
+.actionsContent {
+  max-width: 20rem;
+}
+
+.customLink {
+  --link-bg: var(--color-primary-elevation-5);
+  --link-color: var(--color-primary-elevation-1);
+  --link-border: var(--color-primary-elevation-8);
+}

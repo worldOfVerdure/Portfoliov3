@@ -1,0 +1,16 @@
+@custom-media --bp-up-xxs (min-width: 0px);
+@custom-media --bp-up-xs (min-width: 420px);
+@custom-media --bp-up-sm (min-width: 600px);
+@custom-media --bp-up-md (min-width: 900px);
+@custom-media --bp-up-lg (min-width: 1200px);
+@custom-media --bp-up-xl (min-width: 1536px);
+@custom-media --bp-up-xxl (min-width: 1920px);
+@custom-media --bp-up-xxxl (min-width: 2500px);
+
+@custom-media --bp-down-xs (max-width: 419px);
+@custom-media --bp-down-sm (max-width: 599px);
+@custom-media --bp-down-md (max-width: 899px);
+@custom-media --bp-down-lg (max-width: 1199px);
+@custom-media --bp-down-xl (max-width: 1535px);
+@custom-media --bp-down-xxl (max-width: 1919px);
+@custom-media --bp-down-xxxl (max-width: 2499px);

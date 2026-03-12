@@ -1,0 +1,8 @@
+.actions {
+  --stack-direction: row;
+
+  @media (--bp-down-xs) {
+    --stack-direction: column;
+    margin: 0 auto;
+  }
+}

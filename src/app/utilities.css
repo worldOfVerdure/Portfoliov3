@@ -1,0 +1,39 @@
+.flex {
+	display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.grid {
+	display: grid;
+}
+
+.zero-margin {
+	margin: 0;
+}
+
+.center-margin {
+	margin: 0 auto;
+}
+
+.zero-padding {
+	padding: 0;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.items-center {
+	align-items: center;
+}
+
+.justify-center {
+	justify-content: center;
+}
