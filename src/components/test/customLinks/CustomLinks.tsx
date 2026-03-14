@@ -22,7 +22,7 @@ export const CustomLinks = () => {
           className={styles.actionsContent}
           href="https://react.dev"
           variant="buttonSecondary"
-          size="md"
+          size="sm"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -33,7 +33,7 @@ export const CustomLinks = () => {
           href="https://www.typescriptlang.org/docs/"
           variant="buttonGhost"
           vars={{ '--link-border': 'var(--color-primary)', '--link-color': 'var(--color-primary)' }}
-          size="lg"
+          size="sm"
           target="_blank"
           rel="noopener noreferrer"
         >

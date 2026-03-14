@@ -11,7 +11,7 @@ export const CustomButtons = () => {
         <Button className={styles.actionsContent} size="sm" type="button" >Primary</Button>
         <Button
           className={styles.actionsContent}
-          size={ }
+          size="md"
           type="button"
           variant="secondary"
         >
@@ -19,7 +19,7 @@ export const CustomButtons = () => {
         </Button>
         <Button
           className={styles.actionsContent}
-          size="lg"
+          size="md"
           type="button"
           variant="ghost"
           vars={{ '--btn-border': 'var(--color-primary)', '--btn-color': 'var(--color-primary)' }}
