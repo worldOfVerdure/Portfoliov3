@@ -1,0 +1,7 @@
+.actions {
+  gap: var(--space-4);
+
+  @media (--bp-up-sm) {
+    gap: var(--space-6);
+  }
+}

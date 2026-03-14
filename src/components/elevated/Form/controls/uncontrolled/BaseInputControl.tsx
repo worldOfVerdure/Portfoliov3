@@ -1,5 +1,9 @@
 import * as Form from '@radix-ui/react-form';
+<<<<<<< HEAD
 import { ComponentPropsWithoutRef } from 'react';
+=======
+import { ChangeEvent, ComponentPropsWithoutRef } from 'react';
+>>>>>>> upstream/main
 import { cn } from '@/lib/cn';
 import { useFormState, useFormTheme } from '../../context/formContext';
 import { composeHandlers } from '../../helpers/composeHandlers';
@@ -10,7 +14,14 @@ import { useControlValidationHandlers } from './useControlValidationHandlers';
 
 //~See below for explanation
 export type InputControlProps =
+<<<<<<< HEAD
   Omit<ComponentPropsWithoutRef<'input'>, 'onFocus' | 'onBlur' | 'onInvalid'> & SharedControlProps;
+=======
+  Omit<ComponentPropsWithoutRef<'input'>, 'onFocus' | 'onBlur' | 'onInvalid' | 'onChange'> &
+  SharedControlProps & {
+    onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  };
+>>>>>>> upstream/main
 
 export function BaseInputControl({
   className,
@@ -18,6 +29,10 @@ export function BaseInputControl({
   type,
   onFocus,
   onBlur,
+<<<<<<< HEAD
+=======
+  onChange,
+>>>>>>> upstream/main
   onInvalid,
   'aria-describedby': ariaDescribedBy, //*See below for explanation
   id,
@@ -42,6 +57,10 @@ export function BaseInputControl({
         aria-invalid={errors[name] ? true : undefined}
         onFocus={composeHandlers(handlers.onFocus, onFocus)}
         onBlur={composeHandlers(handlers.onBlur, onBlur)}
+<<<<<<< HEAD
+=======
+        onChange={composeHandlers(handlers.onChange, onChange)}
+>>>>>>> upstream/main
         onInvalid={composeHandlers(handlers.onInvalid, onInvalid)}
       />
     </Form.Control>
