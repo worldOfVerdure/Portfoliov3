@@ -1,8 +1,7 @@
 .actions {
-  --stack-direction: row;
+  gap: var(--space-4);
 
-  @media (--bp-down-xs) {
-    --stack-direction: column;
-    margin: 0 auto;
+  @media (--bp-up-sm) {
+    gap: var(--space-6);
   }
 }
