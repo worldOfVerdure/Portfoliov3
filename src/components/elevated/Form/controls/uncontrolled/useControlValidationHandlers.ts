@@ -1,7 +1,20 @@
-import type { FocusEvent, InvalidEvent } from 'react';
+import type { ChangeEvent, FocusEvent, InvalidEvent } from 'react';
 import { useFormState } from '../../context/formContext';
 
 const isEmpty = (value: string) => value.trim().length === 0;
+
+const isAutofillChange = (control: HTMLInputElement | HTMLTextAreaElement) => {
+  // Browser autofill should set validation state without enabling live typing validation.
+  const autofillSelectors = [':autofill', ':-webkit-autofill'];
+
+  return autofillSelectors.some((selector) => {
+    try {
+      return control.matches(selector);
+    } catch {
+      return false;
+    }
+  });
+};
 
 export const useControlValidationHandlers = (name: string) => {
   const {
@@ -42,6 +55,22 @@ export const useControlValidationHandlers = (name: string) => {
     );
   };
 
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (!isAutofillChange(event.currentTarget)) {
+      return;
+    }
+
+    setTouchedWrapper(name, true);
+    setErrorWrapper(
+      name,
+      rulebook.getValidationMessage({
+        fieldName: name,
+        control: event.currentTarget,
+        validationMessages
+      })
+    );
+  };
+
   const handleInvalid = (event: InvalidEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setTouchedWrapper(name, true);
     setErrorWrapper(
@@ -57,6 +86,7 @@ export const useControlValidationHandlers = (name: string) => {
   return {
     onFocus: handleFocus,
     onBlur: handleBlur,
+    onChange: handleChange,
     onInvalid: handleInvalid
   };
 };

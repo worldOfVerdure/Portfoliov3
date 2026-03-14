@@ -1,5 +1,5 @@
 import * as Form from '@radix-ui/react-form';
-import { ComponentPropsWithoutRef } from 'react';
+import { ChangeEvent, ComponentPropsWithoutRef } from 'react';
 import { cn } from '@/lib/cn';
 import { useFormState, useFormTheme } from '../../context/formContext';
 import { composeHandlers } from '../../helpers/composeHandlers';
@@ -14,13 +14,17 @@ internally for validation purposes. The name prop is also required for our form 
 we can include that in the SharedControlProps.
 */
 export type TextareaControlProps =
-  Omit<ComponentPropsWithoutRef<'textarea'>, 'onFocus' | 'onBlur' | 'onInvalid'> & SharedControlProps;
+  Omit<ComponentPropsWithoutRef<'textarea'>, 'onFocus' | 'onBlur' | 'onInvalid' | 'onChange'> &
+  SharedControlProps & {
+    onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  };
 
 export function TextareaControl({
   className,
   name,
   onFocus,
   onBlur,
+  onChange,
   onInvalid,
   'aria-describedby': ariaDescribedBy,
   id,
@@ -44,6 +48,7 @@ export function TextareaControl({
         aria-invalid={errors[name] ? true : undefined}
         onFocus={composeHandlers(handlers.onFocus, onFocus)}
         onBlur={composeHandlers(handlers.onBlur, onBlur)}
+        onChange={composeHandlers(handlers.onChange, onChange)}
         onInvalid={composeHandlers(handlers.onInvalid, onInvalid)}
       />
     </Form.Control>
