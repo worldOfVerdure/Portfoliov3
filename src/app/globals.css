@@ -1,7 +1,7 @@
 :root {
   color-scheme: light;
 
-  --color-bg: #ffffff;
+  --color-bg: #ececec;
   --color-surface: #f7f8fa;
   --color-text: #0f172a;
   --color-text-muted: #475569;
@@ -65,7 +65,7 @@ body {
   font-family: var(--font-family-base);
   font-size: 1.6rem;
   margin: 0;
-  padding: 0;
+  padding: var(--space-3) 0 var(--space-5) 0;
   text-rendering: optimizeLegibility;
 }
 

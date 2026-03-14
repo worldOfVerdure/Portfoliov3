@@ -11,7 +11,7 @@ export const CustomButtons = () => {
         <Button className={styles.actionsContent} size="sm" type="button" >Primary</Button>
         <Button
           className={styles.actionsContent}
-          size="md"
+          size={ }
           type="button"
           variant="secondary"
         >

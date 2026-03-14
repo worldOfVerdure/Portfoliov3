@@ -2,7 +2,6 @@ import { CustomStackContent } from '../reuseables/customStackContent/CustomStack
 import { Link } from '@/components/primitives/Link';
 import { SectionHeading } from '@/components/test/reuseables/sectionHeading/SectionHeading';
 import styles from './styles/customLinks.module.css';
-import { serialize } from 'v8';
 
 export const CustomLinks = () => {
   return (

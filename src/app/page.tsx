@@ -3,7 +3,7 @@ import { Test } from '@/components/test/Test';
 
 export default function HomePage() {
   return (
-    <main className={styles.page}>
+    <main>
       <section className={`${styles.hero} grid items-center`}>
         <Test />
       </section>
