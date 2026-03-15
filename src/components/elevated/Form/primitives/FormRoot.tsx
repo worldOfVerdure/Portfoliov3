@@ -3,8 +3,9 @@
 'use client';
 
 import * as Form from '@radix-ui/react-form';
-import { useId, useMemo, useState } from 'react';
+import { useId, useMemo, useRef, useState } from 'react';
 import { cn } from '@/lib/cn';
+import { FormRegistryProvider } from '../context/formRegistryContext';
 import {
   FormStateContext,
   FormStateContextValue,
@@ -12,6 +13,7 @@ import {
   FormThemeContextValue
 } from '../context/formContext';
 import type { FormErrors, FormRootProps, FormTouchedFields } from '../helpers/types';
+import { AutofillManager } from './AutofillManager';
 
 export function FormRoot({
   className,
@@ -23,6 +25,7 @@ export function FormRoot({
   children,
   ...props
 }: FormRootProps) {
+  const rootRef = useRef<HTMLFormElement | null>(null);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [touchedFields, setTouchedFields] = useState<FormTouchedFields>({});
   const [errors, setErrors] = useState<FormErrors>({});
@@ -75,9 +78,12 @@ export function FormRoot({
   return (
     <FormThemeContext value={themeValue}>
       <FormStateContext value={stateValue}>
-        <Form.Root className={cn(classes?.form, className)} style={{ ...tokens, ...style }} {...props}>
-          {children}
-        </Form.Root>
+        <FormRegistryProvider>
+          <Form.Root ref={rootRef} className={cn(classes?.form, className)} style={{ ...tokens, ...style }} {...props}>
+            <AutofillManager formRootRef={rootRef} />
+            {children}
+          </Form.Root>
+        </FormRegistryProvider>
       </FormStateContext>
     </FormThemeContext>
   );
