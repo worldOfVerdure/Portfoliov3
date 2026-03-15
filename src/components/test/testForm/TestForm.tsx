@@ -24,7 +24,7 @@ const namePattern = "^[A-Za-z ,.'\\-]+$";
 const validationMessages = {
   name: {
     valueMissing: 'Please enter your name',
-    patternMismatch: "Use letters and optional spaces, apostrophes, or hyphens only"
+    patternMismatch: "Use letters, spaces, ', or - only"
   },
   email: {
     valueMissing: 'Please enter your email',
