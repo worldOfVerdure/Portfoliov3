@@ -70,12 +70,13 @@ export const useControlValidationHandlers = (name: string) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const control = event.currentTarget;
     const inputType = (event.nativeEvent as InputEvent).inputType ?? null;
+    const looksLikeAutofillEvent = !inputType && !isEmpty(control.value) && hasAutocompleteEnabled(control);
 
     if (
       touchedFields[name] ||
       isEmpty(control.value) ||
       !hasAutocompleteEnabled(control) ||
-      !inputType ||
+      (!inputType && !looksLikeAutofillEvent) ||
       isTypingInputType(inputType) ||
       isPasteLikeInputType(inputType)
     ) return;
