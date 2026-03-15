@@ -39,6 +39,29 @@ export const useControlValidationHandlers = (name: string) => {
     rulebook
   } = useFormState();
 
+  const syncFormAutofilledControls = (originControl: HTMLInputElement | HTMLTextAreaElement) => {
+    const form = originControl.form;
+    const controls = form
+      ? form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[name], textarea[name]')
+      : [originControl];
+
+    controls.forEach((control) => {
+      if (isEmpty(control.value) || !hasAutocompleteEnabled(control)) {
+        return;
+      }
+
+      setTouchedWrapper(control.name, true);
+      setErrorWrapper(
+        control.name,
+        rulebook.getValidationMessage({
+          fieldName: control.name,
+          control,
+          validationMessages
+        })
+      );
+    });
+  };
+
   const handleFocus = () => {
     setFocusedField(name);
   };
@@ -79,17 +102,8 @@ export const useControlValidationHandlers = (name: string) => {
       isTypingInputType(inputType) ||
       isPasteLikeInputType(inputType)
     ) return;
-    
 
-    setTouchedWrapper(name, true);
-    setErrorWrapper(
-      name,
-      rulebook.getValidationMessage({
-        fieldName: name,
-        control,
-        validationMessages
-      })
-    );
+    syncFormAutofilledControls(control);
   };
 
   const handleInvalid = (event: InvalidEvent<HTMLInputElement | HTMLTextAreaElement>) => {
