@@ -39,35 +39,6 @@ export const useControlValidationHandlers = (name: string) => {
     rulebook
   } = useFormState();
 
-  const syncFormAutofilledControls = (originControl: HTMLInputElement | HTMLTextAreaElement) => {
-    const form = originControl.form;
-    const controls = form
-      ? form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[name], textarea[name]')
-      : [originControl];
-
-    controls.forEach((control) => {
-      if (isEmpty(control.value) || !hasAutocompleteEnabled(control)) {
-        return;
-      }
-
-      setTouchedWrapper(control.name, true);
-      setErrorWrapper(
-        control.name,
-        rulebook.getValidationMessage({
-          fieldName: control.name,
-          control,
-          validationMessages
-        })
-      );
-    });
-  };
-
-  const syncFormAutofilledControlsDeferred = (originControl: HTMLInputElement | HTMLTextAreaElement) => {
-    // Some mobile autofill flows populate sibling fields slightly after the first input event.
-    window.requestAnimationFrame(() => syncFormAutofilledControls(originControl));
-    window.setTimeout(() => syncFormAutofilledControls(originControl), 160);
-  };
-
   const handleFocus = () => {
     setFocusedField(name);
   };
@@ -109,8 +80,15 @@ export const useControlValidationHandlers = (name: string) => {
       isPasteLikeInputType(inputType)
     ) return;
 
-    syncFormAutofilledControls(control);
-    syncFormAutofilledControlsDeferred(control);
+    setTouchedWrapper(name, true);
+    setErrorWrapper(
+      name,
+      rulebook.getValidationMessage({
+        fieldName: name,
+        control,
+        validationMessages
+      })
+    );
   };
 
   const handleInvalid = (event: InvalidEvent<HTMLInputElement | HTMLTextAreaElement>) => {
