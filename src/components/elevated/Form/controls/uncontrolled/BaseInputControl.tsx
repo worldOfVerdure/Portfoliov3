@@ -1,5 +1,5 @@
 import * as Form from '@radix-ui/react-form';
-import { ChangeEvent, ComponentPropsWithoutRef, useRef } from 'react';
+import { ChangeEvent, ComponentPropsWithoutRef } from 'react';
 import { cn } from '@/lib/cn';
 import { useFormState, useFormTheme } from '../../context/formContext';
 import { composeHandlers } from '../../helpers/composeHandlers';
@@ -7,7 +7,6 @@ import { getControlId, getMessageId } from '../../helpers/ids';
 import { useValidationFlowStatus } from '../../helpers/state';
 import { SharedControlProps } from '../../helpers/types';
 import { useControlValidationHandlers } from './useControlValidationHandlers';
-import { useRegisterUncontrolledControl } from './useRegisterUncontrolledControl';
 
 //~See below for explanation
 export type InputControlProps =
@@ -33,20 +32,11 @@ export function BaseInputControl({
   const fieldState = useValidationFlowStatus(name);
   const handlers = useControlValidationHandlers(name);
   const messageId = getMessageId(formId, name);
-  const controlRef = useRef<HTMLInputElement | null>(null);
-  const isControlled = props.value !== undefined || props.checked !== undefined;
-
-  useRegisterUncontrolledControl({
-    name,
-    isControlled,
-    controlRef
-  });
 
   return (
     <Form.Control asChild>
       <input
         {...props}
-        ref={controlRef}
         id={id ?? getControlId(formId, name)}
         className={cn(classes?.control, className)}
         data-validation={fieldState}

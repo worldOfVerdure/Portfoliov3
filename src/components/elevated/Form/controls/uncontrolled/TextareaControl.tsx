@@ -1,5 +1,5 @@
 import * as Form from '@radix-ui/react-form';
-import { ChangeEvent, ComponentPropsWithoutRef, useRef } from 'react';
+import { ChangeEvent, ComponentPropsWithoutRef } from 'react';
 import { cn } from '@/lib/cn';
 import { useFormState, useFormTheme } from '../../context/formContext';
 import { composeHandlers } from '../../helpers/composeHandlers';
@@ -7,7 +7,6 @@ import { getControlId, getMessageId } from '../../helpers/ids';
 import { useValidationFlowStatus } from '../../helpers/state';
 import { SharedControlProps } from '../../helpers/types';
 import { useControlValidationHandlers } from './useControlValidationHandlers';
-import { useRegisterUncontrolledControl } from './useRegisterUncontrolledControl';
 
 /*
 Omit onFocus, onBlur, and onInvalid from the native textarea props since we're handling those
@@ -36,20 +35,11 @@ export function TextareaControl({
   const fieldState = useValidationFlowStatus(name);
   const handlers = useControlValidationHandlers(name);
   const messageId = getMessageId(formId, name);
-  const controlRef = useRef<HTMLTextAreaElement | null>(null);
-  const isControlled = props.value !== undefined;
-
-  useRegisterUncontrolledControl({
-    name,
-    isControlled,
-    controlRef
-  });
 
   return (
     <Form.Control asChild>
       <textarea
         {...props}
-        ref={controlRef}
         id={id ?? getControlId(formId, name)}
         className={cn(classes?.textarea, classes?.control, className)}
         data-validation={fieldState}
