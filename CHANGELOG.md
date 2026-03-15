@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-03-15
+
+- Updated `src/components/elevated/Form/controls/uncontrolled/useControlValidationHandlers.ts` to replace pseudo-class-based autofill detection (`:autofill` / `:-webkit-autofill`) with an input-event heuristic.
+- Added input-type filtering so normal typing and deletion (`insertText`, `insertCompositionText`, `deleteContentBackward`, `deleteContentForward`) do not trigger early validation in untouched uncontrolled fields.
+- Kept blur/invalid validation behavior unchanged while allowing non-typing value injections (for example QuickType-like fills) to enter validation flow when the control is untouched, non-empty, and has autocomplete enabled.
+
 ## 2026-03-14
 
 - Updated `src/components/test/customButtons/styles/customButtons.module.css` to use the custom media breakpoint `--bp-up-sm` (min-width: 600px).
