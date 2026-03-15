@@ -3,7 +3,7 @@
 'use client';
 
 import * as Form from '@radix-ui/react-form';
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useId, useMemo, useState } from 'react';
 import { cn } from '@/lib/cn';
 import {
   FormStateContext,
@@ -12,18 +12,6 @@ import {
   FormThemeContextValue
 } from '../context/formContext';
 import type { FormErrors, FormRootProps, FormTouchedFields } from '../helpers/types';
-
-const autofillSelectors = [':autofill', ':-webkit-autofill'];
-
-const isAutofilledControl = (control: HTMLInputElement | HTMLTextAreaElement) => {
-  return autofillSelectors.some((selector) => {
-    try {
-      return control.matches(selector);
-    } catch {
-      return false;
-    }
-  });
-};
 
 export function FormRoot({
   className,
@@ -35,7 +23,6 @@ export function FormRoot({
   children,
   ...props
 }: FormRootProps) {
-  const formRef = useRef<HTMLFormElement | null>(null);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [touchedFields, setTouchedFields] = useState<FormTouchedFields>({});
   const [errors, setErrors] = useState<FormErrors>({});
@@ -85,66 +72,10 @@ export function FormRoot({
 
   const themeValue = useMemo<FormThemeContextValue>(() => ({ classes }), [classes]);
 
-  useEffect(() => {
-    const syncAutofilledControls = () => {
-      const form = formRef.current;
-
-      if (!form) {
-        return;
-      }
-
-      const controls = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[name], textarea[name]');
-
-      controls.forEach((control) => {
-        if (!isAutofilledControl(control)) {
-          return;
-        }
-
-        setTouchedFields((previous) => {
-          if (previous[control.name]) {
-            return previous;
-          }
-
-          return {
-            ...previous,
-            [control.name]: true
-          };
-        });
-
-        const message = rulebook.getValidationMessage({
-          fieldName: control.name,
-          control,
-          validationMessages
-        });
-
-        setErrors((previous) => {
-          if (previous[control.name] === message) {
-            return previous;
-          }
-
-          return {
-            ...previous,
-            [control.name]: message
-          };
-        });
-      });
-    };
-
-    syncAutofilledControls();
-
-    const animationFrameId = window.requestAnimationFrame(syncAutofilledControls);
-    const timeoutId = window.setTimeout(syncAutofilledControls, 300);
-
-    return () => {
-      window.cancelAnimationFrame(animationFrameId);
-      window.clearTimeout(timeoutId);
-    };
-  }, [rulebook, validationMessages]);
-
   return (
     <FormThemeContext value={themeValue}>
       <FormStateContext value={stateValue}>
-        <Form.Root ref={formRef} className={cn(classes?.form, className)} style={{ ...tokens, ...style }} {...props}>
+        <Form.Root className={cn(classes?.form, className)} style={{ ...tokens, ...style }} {...props}>
           {children}
         </Form.Root>
       </FormStateContext>
