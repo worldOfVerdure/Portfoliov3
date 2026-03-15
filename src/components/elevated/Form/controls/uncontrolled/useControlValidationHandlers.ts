@@ -62,6 +62,12 @@ export const useControlValidationHandlers = (name: string) => {
     });
   };
 
+  const syncFormAutofilledControlsDeferred = (originControl: HTMLInputElement | HTMLTextAreaElement) => {
+    // Some mobile autofill flows populate sibling fields slightly after the first input event.
+    window.requestAnimationFrame(() => syncFormAutofilledControls(originControl));
+    window.setTimeout(() => syncFormAutofilledControls(originControl), 160);
+  };
+
   const handleFocus = () => {
     setFocusedField(name);
   };
@@ -104,6 +110,7 @@ export const useControlValidationHandlers = (name: string) => {
     ) return;
 
     syncFormAutofilledControls(control);
+    syncFormAutofilledControlsDeferred(control);
   };
 
   const handleInvalid = (event: InvalidEvent<HTMLInputElement | HTMLTextAreaElement>) => {
