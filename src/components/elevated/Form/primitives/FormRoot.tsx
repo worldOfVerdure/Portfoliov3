@@ -23,7 +23,6 @@ export function FormRoot({
   children,
   ...props
 }: FormRootProps) {
-  
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [touchedFields, setTouchedFields] = useState<FormTouchedFields>({});
   const [errors, setErrors] = useState<FormErrors>({});

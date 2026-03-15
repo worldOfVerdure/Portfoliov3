@@ -7,19 +7,29 @@ import { useFormState } from '../../context/formContext';
 
 const isEmpty = (value: string) => value.trim().length === 0;
 
-<<<<<<< HEAD
-=======
-const isAutofillChange = (control: HTMLInputElement | HTMLTextAreaElement) => {
-  // Browser autofill should set validation state without enabling live typing validation.
-  const autofillSelectors = [':autofill', ':-webkit-autofill'];
+const typingInputTypes = new Set(['insertText', 'insertCompositionText', 'deleteContentBackward', 'deleteContentForward']);
+const pasteLikeInputTypes = new Set(['insertFromPaste', 'insertFromDrop', 'insertReplacementText']);
 
-  return autofillSelectors.some((selector) => {
-    try {
-      return control.matches(selector);
-    } catch {
-      return false;
-    }
-  });
+const isTypingInputType = (inputType: string | null | undefined) => {
+  if (!inputType) {
+    return false;
+  }
+
+  return typingInputTypes.has(inputType);
+};
+
+const isPasteLikeInputType = (inputType: string | null | undefined) => {
+  if (!inputType) {
+    return false;
+  }
+
+  return pasteLikeInputTypes.has(inputType);
+};
+
+const hasAutocompleteEnabled = (control: HTMLInputElement | HTMLTextAreaElement) => {
+  const autocomplete = control.autocomplete.trim().toLowerCase();
+
+  return autocomplete !== 'off';
 };
 
 >>>>>>> upstream/main
@@ -65,16 +75,25 @@ export const useControlValidationHandlers = (name: string) => {
 <<<<<<< HEAD
 =======
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    if (!isAutofillChange(event.currentTarget)) {
-      return;
-    }
+    const control = event.currentTarget;
+    const inputType = (event.nativeEvent as InputEvent).inputType ?? null;
+    const looksLikeAutofillEvent = !inputType && !isEmpty(control.value) && hasAutocompleteEnabled(control);
+
+    if (
+      touchedFields[name] ||
+      isEmpty(control.value) ||
+      !hasAutocompleteEnabled(control) ||
+      (!inputType && !looksLikeAutofillEvent) ||
+      isTypingInputType(inputType) ||
+      isPasteLikeInputType(inputType)
+    ) return;
 
     setTouchedWrapper(name, true);
     setErrorWrapper(
       name,
       rulebook.getValidationMessage({
         fieldName: name,
-        control: event.currentTarget,
+        control,
         validationMessages
       })
     );
