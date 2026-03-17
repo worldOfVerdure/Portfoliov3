@@ -1,10 +1,7 @@
 .header {
   background-color: transparent;
   padding: var(--space-4) 0;
-}
-
-.navHeader {
-  position: sticky;
+  position: fixed;
 }
 
 .linkStack{

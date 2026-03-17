@@ -54,3 +54,37 @@ The component supports these styling methods:
   Contact us
 </Link>
 ```
+
+## Label slot example
+
+The `classes.label` slot is useful when the root link should keep its spacing/border tokens,
+but the inner content needs its own layout (for example text + icon alignment).
+
+```css
+/* Hero.module.css */
+.ctaLink {
+   width: fit-content;
+}
+
+.ctaLabel {
+   display: inline-flex;
+   align-items: center;
+   gap: var(--space-2);
+}
+```
+
+```tsx
+import { ChevronRightIcon } from '@radix-ui/react-icons';
+
+<Link
+   href="#projects"
+   variant="buttonPrimary"
+   size="lg"
+   classes={{ root: styles.ctaLink, label: styles.ctaLabel }}
+>
+   View Work
+   <ChevronRightIcon width={16} height={16} />
+</Link>
+```
+
+This keeps root-level visuals on the anchor while letting the label handle icon/text composition.

@@ -5,9 +5,9 @@ import { Header } from '../components/project/header/';
 import { staticHeaderData } from '@/components/project/header/headerData/staticHeaderData';
 
 export const metadata: Metadata = {
-  title: 'Small Business Next Template',
+  title: 'Andrew Chupka Portfolio',
   description:
-    'A fast Next.js + React + TypeScript + CSS Modules starter optimized for small business websites.'
+    'I am a fullstack developer who loves building responsive, performant websites. I have experience with React, Next.js, Express.js, and more. Check out my projects and get in touch!',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

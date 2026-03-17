@@ -1,0 +1,48 @@
+.heroContainer {
+  background: #020024;
+  background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 65%, rgba(0, 212, 255, 1) 100%);
+  height: 100vh;
+}
+
+.heroStack {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+
+  @media (--bp-down-xs) {
+    width: 90%;
+  }
+}
+
+.heroH1, .heroH2 {
+  font-size: var(--font-size-3);
+  
+  @media (--bp-up-xs) {
+    font-size: var(--text-heading);
+  }
+
+  @media (--bp-up-sm) {
+    font-size: var(--text-display);
+  }
+}
+
+.heroH1Name {
+  color: var(--color-primary-contrast);
+}
+
+.heroLink {
+  letter-spacing: .1rem;
+  transition: box-shadow 360ms ease;
+  &:hover, &:focus-visible  {
+    box-shadow: 0 0 10px var(--color-primary-contrast), 0 0 30px var(--color-primary-contrast), 0 0 60px var(--color-primary-contrast);
+    transform: none;
+  }
+}
+
+.heroLinkLabel {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--space-3);
+}
