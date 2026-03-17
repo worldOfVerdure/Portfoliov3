@@ -1,9 +1,6 @@
-'use client';
-
 import { Link } from '../../primitives/Link';
 import { Stack } from '../../primitives/Stack'
 import styles from '../header/styles/header.module.css';
-import { useBreakpointDown } from '@/lib/useMediaQuery';
 
 type HeaderLink = {
   linkText: string;
@@ -15,21 +12,18 @@ type HeaderProps = {
 };
 
 export const Header = ({links}: HeaderProps) => {
-  const isPhoneOrSmaller = useBreakpointDown('xs', {
-    initializeWithValue: false
-  });
   return (
     <header className={`${styles.header} full-width`} >
       <nav>
         <Stack
           as="ul"
-          className={`${styles.stack} no-bullets zero-margin zero-padding`}
+          className={`${styles.linkStack} no-bullets zero-margin zero-padding`}
           direction="row"
           justify="center"
         >
           {links.map(({ linkText, linkHref }) => (
             <li key={linkText}>
-              <Link href={linkHref} size={isPhoneOrSmaller ? "md" : "compact-lg"}>{linkText}</Link>
+              <Link className={styles.links} href={linkHref} >{linkText}</Link>
             </li>
           ))}
         </Stack>

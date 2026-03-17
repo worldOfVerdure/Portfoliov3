@@ -1,7 +1,21 @@
 .header {
   background-color: transparent;
+  padding: var(--space-4) 0;
 }
 
-/* .stack {
+.navHeader {
+  position: sticky;
+}
 
-} */
+.linkStack{
+  gap: var(--space-5);
+
+  @media (--bp-up-xs) {
+    justify-content: flex-end;
+    padding-right: 4rem;
+  }
+}
+
+.links {
+  font-size: var(--text-body);
+}

@@ -10,7 +10,8 @@ The component supports these styling methods:
    - Built-in visual variants: `text`, `buttonPrimary`, `buttonSecondary`, `buttonGhost`.
 
 2. **`size`**
-   - Built-in sizes: `sm`, `md`, `lg`, `compact-lg`.
+   - Built-in sizes: `none`, `sm`, `md`, `lg`, `compact-lg`.
+   - Default: `none` (applies no size class).
 
 3. **`className`**
    - Extra class(es) applied to the root anchor.
@@ -34,7 +35,7 @@ The component supports these styling methods:
 
 ## Priority / merge behavior
 
-- Base styles come from `Link.module.css` (`link`, `variant`, `size`).
+- Base styles come from `Link.module.css` (`link`, `variant`, optional `size`).
 - Inline styles from `style`/`vars` are merged into `mergedStyle` and applied to the root anchor.
 - In `mergedStyle`, `vars` is spread after `style`, so on key conflicts `vars` wins.
 
@@ -44,7 +45,7 @@ The component supports these styling methods:
 <Link
   href="/contact"
   variant="buttonSecondary"
-  size="md"
+   size="none"
   className="myLink"
   classes={{ root: 'myLinkRoot', label: 'myLinkLabel' }}
   vars={{ '--link-border': 'var(--color-primary)', '--link-color': 'var(--color-primary)' }}
