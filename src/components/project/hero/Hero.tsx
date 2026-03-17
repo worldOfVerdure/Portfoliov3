@@ -29,7 +29,7 @@ export const Hero = () => {
           size="lg"
           variant="buttonGhost"
         >
-          View Work
+          View My Work
           <ChevronDownIcon height={20} width={20} />
         </Link>
       </Stack>
