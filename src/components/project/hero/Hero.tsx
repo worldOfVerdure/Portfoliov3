@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from 'react';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { Link } from '../../primitives/Link';
 import { Stack } from '../../primitives/Stack';
 import styles from './styles/Hero.module.css';
+import { useEffect, useState } from 'react';
 
 export const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);

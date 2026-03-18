@@ -31,14 +31,16 @@
 }
 
 @starting-style {
+  .heroH1, .heroH2 {
+    opacity: 0;
+  }
+
   .heroH1 {
     transform: translateX(-100%);
-    opacity: 0;
   }
 
   .heroH2 {
     transform: translateX(100%);
-    opacity: 0;
   }
 }
 
@@ -47,11 +49,27 @@
 }
 
 .heroLink {
+  display: inline-block;
   letter-spacing: .1rem;
   opacity: 0;
   transition: opacity 1.6s ease-in;
-  &:hover, &:focus-visible  {
+  position: relative;
+
+  &::after {
     box-shadow: 0 0 10px var(--color-primary-contrast), 0 0 30px var(--color-primary-contrast), 0 0 60px var(--color-primary-contrast);
+    content: "";
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity .8s ease;
+  }
+
+  &:hover::after, &:focus-visible::after {
+    opacity: 1;
+  }
+
+  &:hover, &:focus-visible {
     transform: none;
   }
 }
