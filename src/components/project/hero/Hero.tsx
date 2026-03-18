@@ -7,6 +7,18 @@ export const Hero = () => {
 
   return (
     <section className={`${styles.heroContainer} full-width`} >
+      <span
+        aria-hidden="true"
+        className={`${styles.navThemeSentinel} ${styles.navThemeSentinelTop}`}
+        data-nav-theme="light"
+        data-nav-theme-sentinel
+      />
+      <span
+        aria-hidden="true"
+        className={`${styles.navThemeSentinel} ${styles.navThemeSentinelBright}`}
+        data-nav-theme="dark"
+        data-nav-theme-sentinel
+      />
       <Stack className={styles.heroStack}>
         <div>
           <h1 className={`${styles.heroH1} text-center`}>

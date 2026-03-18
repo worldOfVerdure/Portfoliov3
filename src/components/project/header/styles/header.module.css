@@ -1,7 +1,22 @@
 .header {
+  --header-nav-text: var(--color-text);
+
   background-color: transparent;
+  left: 0;
   padding: var(--space-4) 0;
   position: fixed;
+  top: 0;
+  transition: color 240ms ease;
+  width: 100%;
+  z-index: 20;
+}
+
+.navLight {
+  --header-nav-text: var(--color-text);
+}
+
+.navDark {
+  --header-nav-text: #0d1117;
 }
 
 .linkStack{
@@ -15,4 +30,7 @@
 
 .links {
   font-size: var(--text-body);
+  --link-color: var(--header-nav-text);
+  color: var(--header-nav-text);
+  transition: color 240ms ease;
 }
