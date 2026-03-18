@@ -1,17 +1,9 @@
-"use client";
-
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import { Link } from '../../primitives/Link';
 import { Stack } from '../../primitives/Stack';
 import styles from './styles/Hero.module.css';
-import { useEffect, useState } from 'react';
 
 export const Hero = () => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   return (
     <section className={`${styles.heroContainer} full-width`} >
@@ -24,7 +16,7 @@ export const Hero = () => {
         </div>
         <Link
           classes={{ label: styles.heroLinkLabel }}
-          className={`${styles.heroLink} ${isMounted ? styles.heroLinkEntered : ''}`}
+          className={styles.heroLink}
           href="#projects"
           size="lg"
           variant="buttonGhost"

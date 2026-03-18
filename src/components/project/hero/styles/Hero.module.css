@@ -30,28 +30,10 @@
   }
 }
 
-@starting-style {
-  .heroH1, .heroH2 {
-    opacity: 0;
-  }
-
-  .heroH1 {
-    transform: translateX(-100%);
-  }
-
-  .heroH2 {
-    transform: translateX(100%);
-  }
-}
-
-.heroH1Name {
-  color: var(--color-primary-contrast);
-}
-
 .heroLink {
   display: inline-block;
   letter-spacing: .1rem;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 1.6s ease-in;
   position: relative;
 
@@ -74,8 +56,24 @@
   }
 }
 
-.heroLinkEntered {
-  opacity: 1;
+@starting-style {
+  .heroH1,
+  .heroH2,
+  .heroLink {
+    opacity: 0;
+  }
+
+  .heroH1 {
+    transform: translateX(-100%);
+  }
+
+  .heroH2 {
+    transform: translateX(100%);
+  }
+}
+
+.heroH1Name {
+  color: var(--color-primary-contrast);
 }
 
 .heroLinkLabel {
