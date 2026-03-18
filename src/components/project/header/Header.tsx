@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
 import { Link } from '../../primitives/Link';
 import { Stack } from '../../primitives/Stack'
 import styles from '../header/styles/header.module.css';
+import { useEffect, useRef, useState } from 'react';
 
 type HeaderLink = {
   linkText: string;

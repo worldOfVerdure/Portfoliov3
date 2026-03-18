@@ -1,22 +1,25 @@
 .header {
   --header-nav-text: var(--color-text);
+  --header-bg: #ffffff;
 
-  background-color: transparent;
+  background-color: var(--header-bg);
   left: 0;
   padding: var(--space-4) 0;
   position: fixed;
   top: 0;
-  transition: color 240ms ease;
+  transition: background-color 240ms ease, color 240ms ease;
   width: 100%;
   z-index: 20;
 }
 
 .navLight {
-  --header-nav-text: var(--color-text);
+  --header-nav-text: #000000;
+  --header-bg: #ffffff;
 }
 
 .navDark {
-  --header-nav-text: #0d1117;
+  --header-nav-text: #ffffff;
+  --header-bg: #000000;
 }
 
 .linkStack{
