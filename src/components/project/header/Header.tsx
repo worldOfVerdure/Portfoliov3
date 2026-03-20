@@ -34,6 +34,11 @@ export const Header = ({links}: HeaderProps) => {
     }
 
     const resolveTheme = () => {
+      /* scrollY returns pixels we scroll from viewport top and .bottom returns the bottom position
+       returns the number of pixels from the top of relative to the viewport. Given the fixed nature
+       of Header, header.getBoundingClientRect().bottom equates to the Header's height. So by adding
+       how much we scroll to the height, we are effectively calculating the threshold for sentinels
+       waiting at their respective pixel positions. */
       const headerBottomInDocument = window.scrollY + header.getBoundingClientRect().bottom;
       let resolvedTheme: 'light' | 'dark' = 'light';
 

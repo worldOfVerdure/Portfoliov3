@@ -13,13 +13,13 @@
 }
 
 .navLight {
-  --header-nav-text: #000000;
-  --header-bg: #ffffff;
+  --header-nav-text: #020024;
+  --header-bg: #00d4ff;
 }
 
 .navDark {
-  --header-nav-text: #ffffff;
-  --header-bg: #000000;
+  --header-nav-text: #00d4ff;
+  --header-bg: #020024;
 }
 
 .linkStack{
