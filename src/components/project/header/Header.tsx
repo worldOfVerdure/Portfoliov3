@@ -92,7 +92,7 @@ export const Header = ({links}: HeaderProps) => {
       <nav>
         <Stack
           as="ul"
-          className={`${styles.linkStack} no-bullets zero-margin zero-padding`}
+          className={`${styles.linkStack} no-bullets zero-margin`}
           direction="row"
           justify="center"
         >

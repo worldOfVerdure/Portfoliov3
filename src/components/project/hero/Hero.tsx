@@ -4,7 +4,6 @@ import { Stack } from '../../primitives/Stack';
 import styles from './styles/Hero.module.css';
 
 export const Hero = () => {
-
   return (
     <section className={`${styles.heroContainer} full-width`} >
       <span
@@ -21,10 +20,10 @@ export const Hero = () => {
       />
       <Stack className={styles.heroStack}>
         <div>
-          <h1 className={`${styles.heroH1} text-center`}>
-            Hello, I am <span className={styles.heroH1Name}>Andrew Chupka</span>
+          <h1 className={`${styles.heroH1} font-header text-center`}>
+            I&apos;m <span className={styles.heroH1Name}>Andrew Chupka</span>
           </h1>
-          <h2 className={`${styles.heroH2} text-center`}>I&apos;m a Fullstack Developer</h2>
+          <h2 className={`${styles.heroH2} font-header text-center`}>I&apos;m a Fullstack Developer</h2>
         </div>
         <Link
           classes={{ label: styles.heroLinkLabel }}

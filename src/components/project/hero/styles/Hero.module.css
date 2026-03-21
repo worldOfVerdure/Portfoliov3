@@ -34,7 +34,7 @@
 }
 
 .heroH1, .heroH2 {
-  font-size: var(--font-size-3);
+  font-size: clamp(2.4rem, 2.26rem + 0.6vw, 2.6rem);
   opacity: 1;
   transform: translateX(0);
   transition: transform 1.6s ease, opacity 1.6s ease-in;
@@ -96,5 +96,6 @@
 .heroLinkLabel {
   align-items: center;
   display: inline-flex;
+  font-size: var(--font-size-3);
   gap: var(--space-3);
 }

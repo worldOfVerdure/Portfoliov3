@@ -35,5 +35,5 @@
   font-size: var(--text-body);
   --link-color: var(--header-nav-text);
   color: var(--header-nav-text);
-  transition: color 240ms ease;
+  transition: color 1240ms ease;
 }
