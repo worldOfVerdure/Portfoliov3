@@ -23,21 +23,27 @@
 
 .heroStack {
   position: absolute;
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
+  width: 90%;
 
-  @media (--bp-down-xs) {
-    width: 90%;
+  @media (--bp-up-xs) {
+    width: 80%;
+  }
+
+  @media (--bp-up-xs) and (orientation: landscape) {
+    top: 55%;
   }
 }
 
 .heroH1, .heroH2 {
-  font-size: clamp(2.4rem, 2.26rem + 0.6vw, 2.6rem);
+  color: #f7f8fa;
+  font-size: clamp(2.4rem, 2.26rem + 0.8vw, 2.7rem);
   opacity: 1;
   transform: translateX(0);
   transition: transform 1.6s ease, opacity 1.6s ease-in;
+  
   @media (--bp-up-xs) {
     font-size: var(--text-heading);
   }

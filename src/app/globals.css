@@ -3,7 +3,7 @@
 
   --color-bg: #ececec;
   --color-surface: #f7f8fa;
-  --color-text: #f7f8fa;
+  --color-text: #020024;
   --color-text-muted: #475569;
   --color-border: #f7f8fa;
   --color-primary: #090979;
@@ -78,7 +78,17 @@ a {
   text-decoration: none;
 }
 
-ol, ul {
+h1,
+h2,
+h3,
+ol,
+ul {
   margin: 0;
   padding: 0;
+}
+/* Reuseable classes */
+.sectionH2 {
+  font-family: var(--font-family-header);
+  font-size: var(--text-heading);
+  margin: 0 0 0 4rem;
 }

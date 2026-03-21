@@ -18,13 +18,13 @@ export const Hero = () => {
         data-nav-theme="dark"
         data-nav-theme-sentinel
       />
-      <Stack className={styles.heroStack}>
-        <div>
+      <Stack className={styles.heroStack} gap="var(--space-5)" >
+        {/* <div> */}
           <h1 className={`${styles.heroH1} font-header text-center`}>
             I&apos;m <span className={styles.heroH1Name}>Andrew Chupka</span>
           </h1>
           <h2 className={`${styles.heroH2} font-header text-center`}>I&apos;m a Fullstack Developer</h2>
-        </div>
+        {/* </div> */}
         <Link
           classes={{ label: styles.heroLinkLabel }}
           className={styles.heroLink}
