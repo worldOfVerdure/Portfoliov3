@@ -1,3 +1,5 @@
+@custom-media --hero-short-landscape (max-height: 420px) and (orientation: landscape);
+
 .heroContainer {
   background: #020024;
   background: linear-gradient(180deg, #020024 0%, #090979 65%, #00d4ff 100%);
@@ -27,14 +29,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
-
-  @media (--bp-up-xs) {
-    width: 80%;
-  }
-
-  @media (--bp-up-xs) and (orientation: landscape) {
-    top: 55%;
-  }
 }
 
 .heroH1, .heroH2 {
@@ -43,14 +37,6 @@
   opacity: 1;
   transform: translateX(0);
   transition: transform 1.6s ease, opacity 1.6s ease-in;
-  
-  @media (--bp-up-xs) {
-    font-size: var(--text-heading);
-  }
-
-  @media (--bp-up-sm) {
-    font-size: var(--text-display);
-  }
 }
 
 .heroLink {
@@ -104,4 +90,30 @@
   display: inline-flex;
   font-size: var(--font-size-3);
   gap: var(--space-3);
+}
+
+@media (--bp-up-xs) {
+  .heroStack {
+    width: 80%;
+  }
+
+  .heroH1,
+  .heroH2 {
+    font-size: var(--text-heading);
+  }
+}
+
+@media (--hero-short-landscape) {
+  .heroStack {
+    top: 55%;
+  }
+
+  .heroH1,
+  .heroH2 {
+    font-size: clamp(2.4rem, 2.26rem + 1.2vh, 2.8rem);
+  }
+
+  .heroLinkLabel {
+    font-size: clamp(1.6rem, 1.52rem + 0.3vh, 1.8rem);
+  }
 }
