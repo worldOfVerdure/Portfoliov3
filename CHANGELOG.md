@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-03-22
+
+- Extended src/components/elevated/Form/helpers/types.ts with containsHtml and containsScriptTag validation message keys.
+- Updated src/components/elevated/Form/rulebooks/idleInvalidRule.ts and src/components/elevated/Form/rulebooks/invalidFocusValidRule.ts to reject values containing HTML-like tags or script tags before native constraint checks.
+
 ## 2026-03-15
 
 - Updated `src/components/elevated/Form/controls/uncontrolled/useControlValidationHandlers.ts` to replace pseudo-class-based autofill detection (`:autofill` / `:-webkit-autofill`) with an input-event heuristic.
