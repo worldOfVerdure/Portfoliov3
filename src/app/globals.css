@@ -28,7 +28,7 @@
 
   --container-max: 115.2rem;
 
-  --font-family-header: var(--font-vend-sans), "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-family-header: var(--font-work-sans), "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-family-body: var(--font-noto-sans), "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-size-1: clamp(1.4rem, 1.312rem + 0.2vw, 1.52rem);
   --font-size-2: clamp(1.6rem, 1.52rem + 0.3vw, 1.8rem);
