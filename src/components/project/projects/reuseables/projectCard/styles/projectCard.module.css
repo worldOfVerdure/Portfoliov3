@@ -1,0 +1,6 @@
+.projectImg {
+  background-color: var(--color-primary);
+  height: auto;
+  padding: var(--spacing-2);
+  width: 80%;
+}
