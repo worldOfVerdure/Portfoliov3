@@ -16,6 +16,7 @@ type HeaderProps = {
 
 export const Header = ({links}: HeaderProps) => {
   const [navTheme, setNavTheme] = useState<'light' | 'dark'>('light');
+  const [activeHref, setActiveHref] = useState<string>('#home');
   const headerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -25,33 +26,39 @@ export const Header = ({links}: HeaderProps) => {
       return;
     }
 
-    const sentinels = Array.from(
-      document.querySelectorAll<HTMLElement>('[data-nav-theme-sentinel][data-nav-theme]')
-    );
+    const sentinels = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-sentinel]'));
 
     if (!sentinels.length) {
       return;
     }
 
-    const resolveTheme = () => {
+    const resolveNavState = () => {
       /* scrollY returns pixels we scroll from viewport top and .bottom returns the bottom position
        returns the number of pixels from the top of relative to the viewport. Given the fixed nature
        of Header, header.getBoundingClientRect().bottom equates to the Header's height. So by adding
-       how much we scroll to the height, we are effectively calculating the threshold for sentinels
-       waiting at their respective pixel positions. */
+       how much we scroll to the height, we are effectively calculating the threshold for sentinel's
+       upper edge with the lower edge of the header. */
       const headerBottomInDocument = window.scrollY + header.getBoundingClientRect().bottom;
       let resolvedTheme: 'light' | 'dark' = 'light';
+      let resolvedHref = '#home';
 
       for (const sentinel of sentinels) {
         const sentinelTopInDocument = window.scrollY + sentinel.getBoundingClientRect().top;
-        const theme = sentinel.dataset.navTheme;
+        const { navActive, navTheme } = sentinel.dataset;
 
-        if (sentinelTopInDocument <= headerBottomInDocument && (theme === 'light' || theme === 'dark')) {
-          resolvedTheme = theme;
+        if (sentinelTopInDocument <= headerBottomInDocument) {
+          if (navTheme === 'light' || navTheme === 'dark') {
+            resolvedTheme = navTheme;
+          }
+
+          if (navActive) {
+            resolvedHref = navActive;
+          }
         }
       }
 
       setNavTheme((prevTheme) => (prevTheme === resolvedTheme ? prevTheme : resolvedTheme));
+      setActiveHref((previousHref) => (previousHref === resolvedHref ? previousHref : resolvedHref));
     };
 
     let observer: IntersectionObserver | null = null;
@@ -61,7 +68,7 @@ export const Header = ({links}: HeaderProps) => {
 
       const headerHeight = Math.ceil(header.getBoundingClientRect().height);
 
-      observer = new IntersectionObserver(resolveTheme, {
+      observer = new IntersectionObserver(resolveNavState, {
         root: null,
         rootMargin: `-${headerHeight}px 0px 0px 0px`,
         threshold: 0,
@@ -73,15 +80,15 @@ export const Header = ({links}: HeaderProps) => {
     };
 
     bindObserver();
-    resolveTheme();
+    resolveNavState();
 
     window.addEventListener('resize', bindObserver);
-    window.addEventListener('resize', resolveTheme);
+    window.addEventListener('resize', resolveNavState);
 
     return () => {
       observer?.disconnect();
       window.removeEventListener('resize', bindObserver);
-      window.removeEventListener('resize', resolveTheme);
+      window.removeEventListener('resize', resolveNavState);
     };
   }, []);
 
@@ -98,7 +105,13 @@ export const Header = ({links}: HeaderProps) => {
         >
           {links.map(({ linkText, linkHref }) => (
             <li key={linkText}>
-              <Link className={styles.links} href={linkHref} >{linkText}</Link>
+              <Link
+                aria-current={linkHref === activeHref ? 'location' : undefined}
+                className={styles.links}
+                href={linkHref}
+              >
+                {linkText}
+              </Link>
             </li>
           ))}
         </Stack>

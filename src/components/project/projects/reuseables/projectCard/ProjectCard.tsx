@@ -19,7 +19,7 @@ export const ProjectCard = ({
 }: ProjectCardProps
 ) => {
   return (
-    <Stack align="center" gap="var(--spacing-3)" >
+    <Stack align="center" gap="var(--space-4)" >
       <h3>{projectTitle}</h3>
       <div className={styles.projectImageContainer} >
         <Image
@@ -30,7 +30,7 @@ export const ProjectCard = ({
           width={imgWidth}
         />
       </div>
-      <Stack direction="row" gap="var(--spacing-2)" >
+      <Stack direction="row" gap="var(--space-5)" >
         <Link href={liveProject} variant="buttonPrimary" >Live Project</Link>
         <Link href={github} variant="buttonSecondary" >GitHub</Link>
       </Stack>

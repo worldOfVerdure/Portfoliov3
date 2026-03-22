@@ -1,5 +1,7 @@
+'use client';
+
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
-import { CSSProperties, ReactNode } from 'react';
+import { CSSProperties, MouseEvent, ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 import styles from './Link.module.css';
 
@@ -46,6 +48,8 @@ export function Link({
   vars,
   style,
   children,
+  href,
+  onClick,
   unstyled = false,
   ...rest
 }: LinkProps) {
@@ -56,9 +60,44 @@ export function Link({
     ...(vars ?? {})
   } as CSSProperties;
 
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    onClick?.(event);
+
+    if (event.defaultPrevented || typeof href !== 'string' || !href.startsWith('#')) {
+      return;
+    }
+
+    const targetId = decodeURIComponent(href.slice(1));
+
+    if (!targetId) {
+      return;
+    }
+
+    const target = document.getElementById(targetId);
+
+    if (!target) {
+      return;
+    }
+
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if (window.location.hash !== href) {
+      window.history.replaceState(null, '', href);
+    }
+
+    event.currentTarget.blur();
+  };
+
   if (unstyled) {
     return (
-      <NextLink className={cn(classes?.root, className)} style={mergedStyle} {...rest}>
+      <NextLink
+        className={cn(classes?.root, className)}
+        href={href}
+        onClick={handleClick}
+        style={mergedStyle}
+        {...rest}
+      >
         <span className={cn(classes?.label)}>{children}</span>
       </NextLink>
     );
@@ -67,6 +106,8 @@ export function Link({
   return (
     <NextLink
       className={cn(styles.link, sizeClass, styles[variant], classes?.root, className)}
+      href={href}
+      onClick={handleClick}
       style={mergedStyle}
       {...rest}
     >

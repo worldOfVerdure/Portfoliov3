@@ -88,3 +88,24 @@ import { ChevronRightIcon } from '@radix-ui/react-icons';
 ```
 
 This keeps root-level visuals on the anchor while letting the label handle icon/text composition.
+
+## Hash-link behavior update
+
+Recent changes in `Link.tsx` added explicit handling for same-page hash links (for example `#projects`).
+
+### What was added
+
+- The component is now client-side (`'use client'`) so click behavior can be controlled in the browser.
+- A shared click handler runs for all links and preserves any consumer `onClick` callback.
+- When `href` is a hash link:
+   - The default browser action is prevented when a matching target exists.
+   - The target section is scrolled into view with smooth behavior.
+   - The URL hash is updated with `history.replaceState` when needed.
+   - The clicked anchor is blurred after navigation.
+
+### What this solved
+
+- Fixed cases where clicking a nav hash link repeatedly (same hash) did not scroll back to the section.
+- Fixed focus-driven underline/active visual state appearing "stuck" after clicking a hash link.
+
+This behavior is centralized in the primitive so header links and CTA links share consistent in-page navigation.

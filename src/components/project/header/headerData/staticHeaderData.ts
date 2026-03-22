@@ -1,7 +1,7 @@
 export const staticHeaderData = [
   {
     linkText: 'Home',
-    linkHref: '/'
+    linkHref: '#home'
   },
   {
     linkText: 'Projects',

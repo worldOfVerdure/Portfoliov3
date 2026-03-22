@@ -63,9 +63,15 @@
   transition: transform 360ms ease;
 }
 
-.text:hover .label::after,
-.text:focus-visible .label::after {
+.text:focus-visible .label::after,
+.text[aria-current='location'] .label::after {
   transform: scaleX(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .text:hover .label::after {
+    transform: scaleX(1);
+  }
 }
 
 .sm {

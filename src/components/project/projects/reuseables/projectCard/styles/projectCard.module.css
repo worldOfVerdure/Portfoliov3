@@ -1,6 +1,7 @@
 .projectImageContainer {
   background-color: var(--color-primary);
   padding: var(--space-2);
+  width: fit-content;
 }
 
 .projectImg {
