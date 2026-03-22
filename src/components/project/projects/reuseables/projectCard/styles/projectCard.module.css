@@ -1,6 +1,11 @@
-.projectImg {
+.projectImageContainer {
   background-color: var(--color-primary);
+  padding: var(--space-2);
+}
+
+.projectImg {
+  display: block;
   height: auto;
-  padding: var(--spacing-2);
+  margin: 0 auto;
   width: 80%;
 }
