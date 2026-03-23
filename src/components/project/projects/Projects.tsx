@@ -21,7 +21,12 @@ export const Projects = () => {
       <h2 className="sectionH2">Projects</h2>
       <Stack as="ul" className={styles.cardContainer}>
         {projectsData.map((project: ProjectCardProps, index: number) => (
-          <li className={styles.cardAlignment} key={project.projectTitle}><ProjectCard {...project} isEven={index % 2 === 0} /></li>
+          <li
+            className={`${styles.cardAlignment} ${styles.liContainer}`}
+            key={project.projectTitle}
+          >
+            <ProjectCard {...project} isEven={index % 2 === 0} />
+          </li>
         ))}
       </Stack>
     </section>
