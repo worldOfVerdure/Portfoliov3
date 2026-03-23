@@ -3,43 +3,10 @@
   margin-bottom: var(--space-4);
 }
 
-.cardBody {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.projectImageLink {
-  display: block;
-  max-width: 97%;
-  order: 2;
-  text-decoration: none;
-}
-
-.projectImageFrame {
+.projectImageContainer {
   background-color: var(--color-primary);
-  display: block;
   padding: var(--space-2) var(--space-4);
-}
-
-.projectContent {
-  order: 1;
-}
-
-.projectDescription {
-  margin: 0;
-  text-align: center;
-}
-
-.projectActions {
-  justify-content: center;
-}
-
-.projectActionLink {
-  --link-font-size: var(--text-caption);
-  --link-px: var(--space-3);
-  --link-py: var(--space-2);
+  max-width: 97%;
 }
 
 .projectImg {
@@ -51,53 +18,11 @@
 }
 
 @media (--bp-up-sm) {
-  .cardBody {
-    align-items: center;
-    flex-direction: row;
-  }
-
-  .cardBodyReversed {
-    flex-direction: row-reverse;
-  }
-
-  .projectImageLink {
-    flex: 1 1 auto;
-    max-width: min(80rem, 60vw);
-    order: 1;
-  }
-
-  .cardBodyReversed .projectImageLink {
-    order: 2;
-  }
-
-  .projectImageFrame {
+  li:nth-child(odd) .projectImageContainer {
     padding: var(--space-2) var(--space-5) var(--space-2) var(--space-1);
   }
 
-  .cardBodyReversed .projectImageFrame {
+  li:nth-child(even) .projectImageContainer {
     padding: var(--space-2) var(--space-1) var(--space-2) var(--space-5);
-  }
-
-  .projectContent {
-    flex: 0 1 32rem;
-    order: 2;
-  }
-
-  .cardBodyReversed .projectContent {
-    order: 1;
-  }
-
-  .projectDescription {
-    text-align: left;
-  }
-
-  .projectActions {
-    justify-content: flex-start;
-  }
-
-  .projectActionLink {
-    --link-font-size: var(--text-body);
-    --link-px: var(--space-5);
-    --link-py: var(--space-3);
   }
 }

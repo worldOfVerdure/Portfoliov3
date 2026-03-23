@@ -4,10 +4,6 @@
 
 - Extended src/components/elevated/Form/helpers/types.ts with containsHtml and containsScriptTag validation message keys.
 - Updated src/components/elevated/Form/rulebooks/idleInvalidRule.ts and src/components/elevated/Form/rulebooks/invalidFocusValidRule.ts to reject values containing HTML-like tags or script tags before native constraint checks.
-- Refactored src/components/project/projects/reuseables/projectCard/ProjectCard.tsx to use a single stable markup structure and removed runtime media-query branching that caused back-navigation layout drift.
-- Updated src/components/project/projects/reuseables/projectCard/styles/projectCard.module.css so responsive layout and alternating card orientation are handled fully in CSS.
-- Hardened src/components/project/header/Header.tsx by adding explicit nav-state resync on scroll, resize, and pageshow to restore sentinel-driven theme/active-link behavior after browser back-forward cache restores.
-- Updated src/components/project/header/Header.tsx sentinel guards so empty-sentinel checks run inside bind/resolve paths (instead of effect-level lifecycle bailout), allowing observer/state recovery when sentinel nodes appear later.
 
 ## 2026-03-15
 

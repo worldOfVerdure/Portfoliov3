@@ -26,15 +26,13 @@ export const Header = ({links}: HeaderProps) => {
       return;
     }
 
-    const getSentinels = () => Array.from(document.querySelectorAll<HTMLElement>('[data-nav-sentinel]'));
+    const sentinels = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-sentinel]'));
+
+    if (!sentinels.length) {
+      return;
+    }
 
     const resolveNavState = () => {
-      const sentinels = getSentinels();
-
-      if (!sentinels.length) {
-        return;
-      }
-
       /* scrollY returns pixels we scroll from viewport top and .bottom returns the bottom position
        returns the number of pixels from the top of relative to the viewport. Given the fixed nature
        of Header, header.getBoundingClientRect().bottom equates to the Header's height. So by adding
@@ -64,19 +62,9 @@ export const Header = ({links}: HeaderProps) => {
     };
 
     let observer: IntersectionObserver | null = null;
-    let mutationObserver: MutationObserver | null = null;
-    let frameId = 0;
-    let lastScrollY = Number.NaN;
-    let lastHeaderHeight = Number.NaN;
 
     const bindObserver = () => {
       observer?.disconnect();
-
-      const sentinels = getSentinels();
-
-      if (!sentinels.length) {
-        return;
-      }
 
       const headerHeight = Math.ceil(header.getBoundingClientRect().height);
 
@@ -91,88 +79,16 @@ export const Header = ({links}: HeaderProps) => {
       });
     };
 
-    const rebindAndResolve = () => {
-      bindObserver();
-      resolveNavState();
-    };
+    bindObserver();
+    resolveNavState();
 
-    const invalidateNavState = () => {
-      lastScrollY = Number.NaN;
-      lastHeaderHeight = Number.NaN;
-    };
-
-    const trackNavState = () => {
-      const nextScrollY = window.scrollY;
-      const nextHeaderHeight = Math.ceil(header.getBoundingClientRect().height);
-
-      if (nextScrollY !== lastScrollY || nextHeaderHeight !== lastHeaderHeight) {
-        const shouldRebind = nextHeaderHeight !== lastHeaderHeight;
-
-        lastScrollY = nextScrollY;
-        lastHeaderHeight = nextHeaderHeight;
-
-        if (shouldRebind) {
-          bindObserver();
-        }
-
-        resolveNavState();
-      }
-
-      frameId = window.requestAnimationFrame(trackNavState);
-    };
-
-    const handleResize = () => {
-      invalidateNavState();
-      rebindAndResolve();
-    };
-
-    const handlePageShow = () => {
-      invalidateNavState();
-    };
-
-    const handlePopState = () => {
-      invalidateNavState();
-    };
-
-    const handleHashChange = () => {
-      invalidateNavState();
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        invalidateNavState();
-      }
-    };
-
-    invalidateNavState();
-    rebindAndResolve();
-    frameId = window.requestAnimationFrame(trackNavState);
-
-    mutationObserver = new MutationObserver(() => {
-      invalidateNavState();
-      rebindAndResolve();
-    });
-
-    mutationObserver.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-
-    window.addEventListener('pageshow', handlePageShow);
-    window.addEventListener('popstate', handlePopState);
-    window.addEventListener('hashchange', handleHashChange);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', bindObserver);
+    window.addEventListener('resize', resolveNavState);
 
     return () => {
-      window.cancelAnimationFrame(frameId);
       observer?.disconnect();
-      mutationObserver?.disconnect();
-      window.removeEventListener('pageshow', handlePageShow);
-      window.removeEventListener('popstate', handlePopState);
-      window.removeEventListener('hashchange', handleHashChange);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', bindObserver);
+      window.removeEventListener('resize', resolveNavState);
     };
   }, []);
 
