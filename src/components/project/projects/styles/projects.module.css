@@ -1,7 +1,11 @@
 .projectsContainer {
-  background-color: #00D4FF;
+  background-color: var(--color-bg);
   position: relative;
   scroll-margin-top: 8rem;
+}
+
+.cardContainer {
+  --stack-gap: 4rem;
 }
 
 .navSectionSentinel {
@@ -25,3 +29,18 @@
   }
 }
 
+@media (--bp-up-lg) {
+   .cardAlignment:nth-child(odd) {
+    align-self: center;
+    margin-left: 0;
+  }
+
+  .cardAlignment:nth-child(even) {
+    align-self: center;
+    margin-right: 0;
+  }
+
+  .cardContainer {
+    --stack-gap: 6.5rem;
+  }
+}

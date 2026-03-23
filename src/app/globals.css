@@ -1,11 +1,11 @@
 :root {
   color-scheme: light;
 
-  --color-bg: #ececec;
+  --color-bg: #00D4FF;
   --color-surface: #f7f8fa;
   --color-text: #020024;
   --color-text-muted: #475569;
-  --color-border: #f7f8fa;
+  --color-border: #020024;
   --color-primary: #090979;
   --color-primary-contrast: #f30b0b;
   --color-error: #fda29b;
@@ -82,7 +82,8 @@ h1,
 h2,
 h3,
 ol,
-ul {
+ul,
+p {
   margin: 0;
   padding: 0;
 }
@@ -102,5 +103,6 @@ li {
 .sectionH2 {
   font-family: var(--font-family-header);
   font-size: var(--text-heading);
-  margin: 0 0 4rem 4rem;
+  margin-bottom: var(--space-8);
+  text-align: center;
 }

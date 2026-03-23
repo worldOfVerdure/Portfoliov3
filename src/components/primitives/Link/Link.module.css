@@ -100,7 +100,7 @@
 
 .buttonPrimary {
   --link-bg: var(--color-primary);
-  --link-color: var(--color-primary-contrast);
+  --link-color: var(--color-surface);
   --link-border: transparent;
   --link-decoration: none;
   --link-hover-decoration: none;

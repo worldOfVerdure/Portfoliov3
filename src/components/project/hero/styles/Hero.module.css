@@ -39,6 +39,11 @@
   transition: transform 1.6s ease, opacity 1.6s ease-in;
 }
 
+.heroH1Name {
+  color: var(--color-primary-contrast);
+  font-weight: 800;
+}
+
 .heroH2 {
   margin-bottom: 2rem;
 }
@@ -83,10 +88,6 @@
   .heroH2 {
     transform: translateX(100%);
   }
-}
-
-.heroH1Name {
-  color: var(--color-primary-contrast);
 }
 
 .heroLinkLabel {

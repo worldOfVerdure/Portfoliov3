@@ -27,9 +27,9 @@ export const projectsData: ProjectCardProps[] = [
     imgWidth: 1670,
     liveProject: 'https://simple-template-gamma.vercel.app/',
     github: 'https://github.com/worldOfVerdure/simpleTemplate',
-    description: `A design-sytem and template I designed, isnpired by MUI&apos;s primitives like
-    Stack, Link and Button while using modular css to avoid JS style objects and minimize JS sent to
-    the client. Radix UI is to provide headless logic and accessibility.`
+    description: `A design-sytem and template I designed, inspired by MUI's primitives like
+    Stack, Link and Button while using modular css to avoid JS style objects to minimize JS sent to
+    the client. Radix UI provides headless logic and accessibility.`
   },
   {
     projectTitle: 'Animated D3.js Graph',
@@ -39,7 +39,9 @@ export const projectsData: ProjectCardProps[] = [
     imgWidth: 1493,
     liveProject: 'https://animated-graph-simulation-d3.vercel.app/',
     github: 'https://github.com/worldOfVerdure/animatedGraphSimulationD3',
-    description: 'Description of Project 2'
+    description: `A graph node simulation inspired by my passion for graph theory. Built with D3.js
+    and the HTML canvas element with responsiveness in mind by reducing the number of nodes based on
+    viewport size.`
   },
   {
     projectTitle: 'Match Game',
@@ -49,6 +51,8 @@ export const projectsData: ProjectCardProps[] = [
     imgWidth: 1665,
     liveProject: 'https://worldofverdure.github.io/GameNMatch/',
     github: 'https://github.com/worldOfVerdure/GameNMatch',
-    description: 'Description of Project 3'
+    description: `An example of the traditional HTML, CSS, and JS panoply. This match game uses the
+    setInterval and epoch time to manage the timer while rotate3d CSS function allows the cards to
+    flip. The number of cards that appear on the screen are dependent on the viewport size.`
   }
 ];

@@ -1,7 +1,10 @@
-import { ChevronDownIcon } from '@radix-ui/react-icons';
+//components
 import { Link } from '../../primitives/Link';
 import { Stack } from '../../primitives/Stack';
+//css
 import styles from './styles/Hero.module.css';
+//icons
+import { ChevronDownIcon } from '@radix-ui/react-icons';
 
 export const Hero = () => {
   return (

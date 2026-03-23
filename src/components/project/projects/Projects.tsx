@@ -19,7 +19,7 @@ export const Projects = () => {
         data-nav-sentinel
       />
       <h2 className="sectionH2">Projects</h2>
-      <Stack as="ul" gap="var(--space-8)">
+      <Stack as="ul" className={styles.cardContainer}>
         {projectsData.map((project: ProjectCardProps, index: number) => (
           <li className={styles.cardAlignment} key={project.projectTitle}><ProjectCard {...project} isEven={index % 2 === 0} /></li>
         ))}
