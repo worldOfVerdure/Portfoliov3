@@ -1,4 +1,6 @@
+
 //components
+import { ProjectCard } from './reuseables/projectCard/ProjectCard';
 import { Stack } from '../../primitives/Stack';
 //css
 import styles from './styles/projects.module.css';
@@ -6,7 +8,6 @@ import styles from './styles/projects.module.css';
 import { projectsData } from './projectsData/projectsData';
 //types
 import type { ProjectCardProps } from './projectsData/projectsData';
-import { ProjectCard } from './reuseables/projectCard/ProjectCard';
 
 export const Projects = () => {
   return (

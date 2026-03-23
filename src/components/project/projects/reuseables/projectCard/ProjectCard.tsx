@@ -8,7 +8,7 @@ import { Stack } from '@/components/primitives/Stack';
 //css
 import styles from './styles/projectCard.module.css';
 //hooks
-import { useBreakpointUp } from '@/lib/useMediaQuery';
+import { useBreakpointUp, useEffect, useRef, useState } from '@/lib/useMediaQuery';
 //types
 import type { ProjectCardProps } from '../../projectsData/projectsData';
 
