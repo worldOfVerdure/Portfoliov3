@@ -33,7 +33,7 @@ export const ProjectCard = ({
     <>
       {isTabletUp ?
       <Stack align="center" direction={isEven ? 'row' : 'row-reverse'} gap="0" >
-        <Link className={styles.projectImageContainer} href={liveProject}>
+        <Link className={styles.projectImageContainer} href={liveProject} unstyled>
           <Image
             alt={imgAlt}
             className={styles.projectImg}
@@ -68,7 +68,7 @@ export const ProjectCard = ({
         <Stack align="center" gap="var(--space-4)" >
           <h3 className={`${styles.projectsH3} full-width text-center`}>{projectTitle}</h3>
           <p className={`${styles.projectDescription} text-center`}>{description}</p>
-          <Link className={styles.projectImageContainer} href={liveProject}>
+          <Link className={styles.projectImageContainer} href={liveProject} unstyled>
             <Image
               alt={imgAlt}
               className={styles.projectImg}
