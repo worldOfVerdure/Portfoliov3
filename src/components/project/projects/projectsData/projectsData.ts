@@ -15,6 +15,7 @@ export type ProjectCardProps = {
   liveProject: `https://${string}`;
   github: `https://${string}`;
   description: string;
+  isEven?: boolean;
 };
 
 export const projectsData: ProjectCardProps[] = [
@@ -26,7 +27,9 @@ export const projectsData: ProjectCardProps[] = [
     imgWidth: 1670,
     liveProject: 'https://simple-template-gamma.vercel.app/',
     github: 'https://github.com/worldOfVerdure/simpleTemplate',
-    description: 'Description of Project 1'
+    description: `A design-sytem and template I designed, isnpired by MUI&apos;s primitives like
+    Stack, Link and Button while using modular css to avoid JS style objects and minimize JS sent to
+    the client. Radix UI is to provide headless logic and accessibility.`
   },
   {
     projectTitle: 'Animated D3.js Graph',

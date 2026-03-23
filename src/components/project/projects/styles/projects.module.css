@@ -1,7 +1,7 @@
 .projectsContainer {
   background-color: #00D4FF;
   position: relative;
-  scroll-margin-top: 6rem;
+  scroll-margin-top: 8rem;
 }
 
 .navSectionSentinel {
@@ -9,6 +9,19 @@
   left: 0;
   pointer-events: none;
   position: absolute;
-  top: 0;
+  top: -4%;
   width: 1px;
 }
+
+@media (--bp-up-sm) {
+  .cardAlignment:nth-child(odd) {
+    align-self: flex-start;
+    margin-left: 1rem;
+  }
+
+  .cardAlignment:nth-child(even) {
+    align-self: flex-end;
+    margin-right: 1rem;
+  }
+}
+

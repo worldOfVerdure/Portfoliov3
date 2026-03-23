@@ -15,26 +15,46 @@ export const ProjectCard = ({
   imgWidth,
   liveProject,
   github,
-  description
-}: ProjectCardProps
-) => {
+  description,
+  isEven
+}: ProjectCardProps) => {
   return (
-    <Stack align="center" gap="var(--space-4)" >
-      <h3>{projectTitle}</h3>
-      <div className={styles.projectImageContainer} >
-        <Image
-          alt={imgAlt}
-          className={styles.projectImg}
-          height={imgHeight}
-          src={imgSrc}
-          width={imgWidth}
-        />
+    <>
+      <h3 className={`${styles.projectsH3} full-width text-center`}>{projectTitle}</h3>
+      <div className={`${styles.cardBody} ${!isEven ? styles.cardBodyReversed : ''}`}>
+        <Link className={styles.projectImageLink} href={liveProject}>
+          <span className={styles.projectImageFrame}>
+            <Image
+              alt={imgAlt}
+              className={styles.projectImg}
+              height={imgHeight}
+              src={imgSrc}
+              width={imgWidth}
+            />
+          </span>
+        </Link>
+        <Stack align="center" className={styles.projectContent} gap="var(--space-4)">
+          <p className={styles.projectDescription}>{description}</p>
+          <Stack className={styles.projectActions} direction="row" gap="var(--space-5)" justify="center" wrap="wrap">
+            <Link
+              className={styles.projectActionLink}
+              href={liveProject}
+              size="lg"
+              variant="buttonPrimary"
+            >
+              Live Project
+            </Link>
+            <Link
+              className={styles.projectActionLink}
+              href={github}
+              size="lg"
+              variant="buttonSecondary"
+            >
+              GitHub
+            </Link>
+          </Stack>
+        </Stack>
       </div>
-      <Stack direction="row" gap="var(--space-5)" >
-        <Link href={liveProject} variant="buttonPrimary" >Live Project</Link>
-        <Link href={github} variant="buttonSecondary" >GitHub</Link>
-      </Stack>
-      <p>{description}</p>
-    </Stack>
+    </>
   );
 };
