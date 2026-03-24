@@ -8,6 +8,25 @@
   --stack-gap: 4rem;
 }
 
+.cardAlignment[data-animate-ready='true']:not([data-animated='true']) {
+  filter: saturate(0.8);
+  opacity: 0;
+  transform: translateY(2.5rem) scale(0.985);
+}
+
+.cardAlignment[data-animate-ready='true'] {
+  transition-delay: var(--project-stagger, 0ms);
+  transition-duration: 0.55s, 0.7s, 0.45s;
+  transition-property: opacity, transform, filter;
+  transition-timing-function: ease, cubic-bezier(0.2, 0.7, 0.2, 1), ease;
+}
+
+.cardAlignment[data-animated='true'] {
+  filter: none;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 .navSectionSentinel {
   height: 1px;
   left: 0;
@@ -42,5 +61,14 @@
 
   .cardContainer {
     --stack-gap: 6.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardAlignment[data-animate-ready='true'] {
+    filter: none;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: none;
   }
 }

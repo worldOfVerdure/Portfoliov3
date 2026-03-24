@@ -8,7 +8,6 @@
   position: fixed;
   top: 0;
   transition: background-color 240ms ease, color 240ms ease;
-  width: 100%;
   z-index: 20;
 }
 

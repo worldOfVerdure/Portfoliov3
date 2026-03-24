@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { Link } from '../../primitives/Link';
 import { Stack } from '../../primitives/Stack'
@@ -21,16 +21,14 @@ export const Header = ({links}: HeaderProps) => {
 
   useEffect(() => {
     const header = headerRef.current;
-
-    if (!header) {
+    
+    if (!header)
       return;
-    }
 
-    const sentinels = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-sentinel]'));
-
-    if (!sentinels.length) {
+    const headerSentinels = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-sentinel]'));
+    
+    if (!headerSentinels.length)
       return;
-    }
 
     const resolveNavState = () => {
       /* scrollY returns pixels we scroll from viewport top and .bottom returns the bottom position
@@ -42,7 +40,7 @@ export const Header = ({links}: HeaderProps) => {
       let resolvedTheme: 'light' | 'dark' = 'light';
       let resolvedHref = '#home';
 
-      for (const sentinel of sentinels) {
+      for (const sentinel of headerSentinels) {
         const sentinelTopInDocument = window.scrollY + sentinel.getBoundingClientRect().top;
         const { navActive, navTheme } = sentinel.dataset;
 
@@ -74,7 +72,7 @@ export const Header = ({links}: HeaderProps) => {
         threshold: 0,
       });
 
-      sentinels.forEach((sentinel) => {
+      headerSentinels.forEach((sentinel) => {
         observer?.observe(sentinel);
       });
     };

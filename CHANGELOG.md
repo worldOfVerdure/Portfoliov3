@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-03-23
+
+- Added IntersectionObserver-driven reveal behavior in src/components/project/projects/Projects.tsx for project list items, using header-height-aware rootMargin and one-time per-mount animation triggers.
+- Added data-attribute animation states in src/components/project/projects/styles/projects.module.css, including staggered reveal timing and a prefers-reduced-motion fallback.
+
 ## 2026-03-22
 
 - Extended src/components/elevated/Form/helpers/types.ts with containsHtml and containsScriptTag validation message keys.
