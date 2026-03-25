@@ -25,11 +25,10 @@ export const Projects = () => {
     const resolveHeaderHeight = () => Math.ceil(header.getBoundingClientRect().height);
 
     let observer: IntersectionObserver | null = null;
-
+    //*revealItem
     const revealItem = (item: HTMLElement) => {
-      if (item.dataset.animated === 'true') {
+      if (item.dataset.animated === 'true')
         return;
-      }
 
       item.dataset.animated = 'true';
       observer?.unobserve(item);
@@ -40,41 +39,72 @@ export const Projects = () => {
       item.style.setProperty('--project-stagger', `${index * 90}ms`);
     });
 
+    const hasPendingAnimations = () =>
+      projectItems.some((item) => item.dataset.animated !== 'true');
+
+    //*bindObserver
     const bindObserver = () => {
       observer?.disconnect();
 
       const headerHeight = resolveHeaderHeight();
-
+      //*Constructor
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (!entry.isIntersecting) {
+            if (!entry.isIntersecting)
               return;
-            }
 
             revealItem(entry.target as HTMLElement);
           });
         },
         {
           root: null,
-          rootMargin: `-${headerHeight}px 0px 30% 0px`,
-          threshold: 0,
+          rootMargin: `-${headerHeight}px 0px -25% 0px`,
+          threshold: .15,
         }
       );
-
+      //*Observe items left to animate
       projectItems.forEach((item) => {
-        if (item.dataset.animated !== 'true') {
+        if (item.dataset.animated !== 'true')
           observer?.observe(item);
-        }
       });
     };
 
     bindObserver();
-    window.addEventListener('resize', bindObserver);
+
+    //*If resize occurs and there are pending animations, rebind the observer with the new header
+    //*height while not replaying already played animations
+    let resizeRafId = 0;
+
+    const handleResize = () => {
+      if (!hasPendingAnimations()) {
+        return;
+      }
+
+      if (resizeRafId) {
+        window.cancelAnimationFrame(resizeRafId);
+      }
+
+      resizeRafId = window.requestAnimationFrame(() => {
+        resizeRafId = 0;
+
+        if (!hasPendingAnimations()) {
+          return;
+        }
+
+        bindObserver();
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
+      if (resizeRafId) {
+        window.cancelAnimationFrame(resizeRafId);
+      }
+
+      window.removeEventListener('resize', handleResize);
       observer?.disconnect();
-      window.removeEventListener('resize', bindObserver);
     };
   }, []);
 

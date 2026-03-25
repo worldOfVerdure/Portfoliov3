@@ -7,7 +7,7 @@
 .cardContainer {
   --stack-gap: 4rem;
 }
-
+/* Initial Prep */
 .cardAlignment[data-animate-ready='true']:not([data-animated='true']) {
   filter: saturate(0.8);
   opacity: 0;
@@ -16,7 +16,7 @@
 
 .cardAlignment[data-animate-ready='true'] {
   transition-delay: var(--project-stagger, 0ms);
-  transition-duration: 0.55s, 0.7s, 0.45s;
+  transition-duration: 1.55s, 1.7s, 1.45s;
   transition-property: opacity, transform, filter;
   transition-timing-function: ease, cubic-bezier(0.2, 0.7, 0.2, 1), ease;
 }

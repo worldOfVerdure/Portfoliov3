@@ -8,7 +8,7 @@ import { Stack } from '@/components/primitives/Stack';
 //css
 import styles from './styles/projectCard.module.css';
 //hooks
-import { useBreakpointUp, useEffect, useRef, useState } from '@/lib/useMediaQuery';
+import { useBreakpointUp } from '@/lib/useMediaQuery';
 //types
 import type { ProjectCardProps } from '../../projectsData/projectsData';
 
@@ -32,38 +32,40 @@ export const ProjectCard = ({
   return (
     <>
       {isTabletUp ?
-      <Stack align="center" direction={isEven ? 'row' : 'row-reverse'} gap="0" >
-        <Link className={styles.projectImageContainer} href={liveProject} unstyled>
-          <Image
-            alt={imgAlt}
-            className={styles.projectImg}
-            height={imgHeight}
-            sizes={sizes}
-            src={imgSrc}
-            width={imgWidth}
-          />
-        </Link>
-        <Stack align="center" className={styles.projectActionsContainer} gap="var(--space-4)" >
-          <h3 className={`${styles.projectsH3} full-width text-center`}>{projectTitle}</h3>
-          <p className={`${styles.projectDescription} text-center`}>{description}</p>
-          <Stack direction="row" gap="var(--space-5)" >
-            <Link
-              href={liveProject}
-              size="lg"
-              variant="buttonPrimary"
-            >
-              Live Project
-            </Link>
-            <Link
-              href={github}
-              size="lg"
-              variant="buttonSecondary"
-            >
-              GitHub
-            </Link>
+        <Stack align="center" direction={isEven ? 'row' : 'row-reverse'} gap="0" >
+          <Link className={styles.projectImageContainer} href={liveProject} unstyled>
+            <Image
+              alt={imgAlt}
+              className={styles.projectImg}
+              height={imgHeight}
+              sizes={sizes}
+              src={imgSrc}
+              width={imgWidth}
+            />
+          </Link>
+          <Stack align="center" className={styles.projectActionsContainer} gap="var(--space-4)" >
+            <h3 className={`${styles.projectsH3} full-width text-center`}>{projectTitle}</h3>
+            <p className={`${styles.projectDescription} text-center`}>{description}</p>
+            <Stack direction="row" gap="var(--space-5)" >
+              <Link
+                className={styles.projectLinkBtns}
+                href={liveProject}
+                size="lg"
+                variant="buttonPrimary"
+              >
+                Live Project
+              </Link>
+              <Link
+                className={styles.projectLinkBtns}
+                href={github}
+                size="lg"
+                variant="buttonSecondary"
+              >
+                GitHub
+              </Link>
+            </Stack>
           </Stack>
         </Stack>
-      </Stack>
        :
         <Stack align="center" gap="var(--space-4)" >
           <h3 className={`${styles.projectsH3} full-width text-center`}>{projectTitle}</h3>
@@ -80,6 +82,7 @@ export const ProjectCard = ({
           </Link>
           <Stack direction="row" gap="var(--space-5)" >
             <Link
+              className={styles.projectLinkBtns}
               href={liveProject}
               size="lg"
               variant="buttonPrimary"
@@ -87,6 +90,7 @@ export const ProjectCard = ({
               Live Project
             </Link>
             <Link
+              className={styles.projectLinkBtns}
               href={github}
               size="lg"
               variant="buttonSecondary"

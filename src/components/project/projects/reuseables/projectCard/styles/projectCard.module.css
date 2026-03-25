@@ -7,7 +7,13 @@
   padding: var(--space-2) var(--space-4);
   max-width: 97%;
   text-decoration: none;
+  transition: transform 0.3s ease-in-out;
 }
+
+.projectImageContainer:hover {
+  transform: scale(1.02);
+}
+
 
 .projectImg {
   display: block;
@@ -24,6 +30,14 @@
 .projectDescription {
   font-size: var(--text-body);
   width: 85%;
+}
+
+.projectLinkBtns {
+  transition: transform 0.3s ease-in-out;
+}
+
+.projectLinkBtns:hover {
+  transform: scale(1.1);
 }
 
 @media (--bp-up-md) {
