@@ -1,6 +1,6 @@
 //components
-import { Link } from '../../primitives/link';
-import { Stack } from '../../primitives/stack';
+import { Link } from '@/components/primitives/link';
+import { Stack } from '@/components/primitives/stack';
 //css
 import styles from './styles/Hero.module.css';
 //icons
