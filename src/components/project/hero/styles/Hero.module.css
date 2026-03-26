@@ -104,7 +104,7 @@
 
   .heroH1,
   .heroH2 {
-    font-size: var(--text-heading);
+    font-size: var(--text-display);
   }
 }
 
