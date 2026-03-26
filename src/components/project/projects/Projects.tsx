@@ -1,15 +1,15 @@
 'use client';
 //components
-import { ProjectCard } from './reuseables/projectCard/ProjectCard';
-import { Stack } from '../../primitives/Stack';
+import { ProjectCard } from './reuseables/project-card/ProjectCard';
+import { Stack } from '../../primitives/stack';
 //css
 import styles from './styles/projects.module.css';
 //data
-import { projectsData } from './projectsData/projectsData';
+import { projectsData } from './projects-data/projectsData';
 //hooks
 import { useEffect } from 'react';
 //types
-import type { ProjectCardProps } from './projectsData/projectsData';
+import type { ProjectCardProps } from './projects-data/projectsData';
 
 export const Projects = () => {
   useEffect(() => {
@@ -109,10 +109,10 @@ export const Projects = () => {
   }, []);
 
   return (
-    <section className={`${styles.projectsContainer} full-width`} id="projects">
+    <section className="full-width sectionContainer" id="projects">
       <span
         aria-hidden="true"
-        className={styles.navSectionSentinel}
+        className="navSectionSentinel"
         data-nav-active="#projects"
         data-nav-theme="dark"
         data-nav-sentinel

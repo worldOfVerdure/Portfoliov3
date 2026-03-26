@@ -2,7 +2,16 @@ import { ComponentPropsWithoutRef, CSSProperties, ElementType } from 'react';
 import { cn } from '@/lib/cn';
 import styles from './Stack.module.css';
 
-export type StackElement = 'div' | 'ol' | 'ul' | 'section' | 'nav' | 'article' | 'form';
+export type StackElement =
+  | 'div'
+  | 'ol'
+  | 'ul'
+  | 'li'
+  | 'a'
+  | 'section'
+  | 'nav'
+  | 'article'
+  | 'form';
 
 type StackTokenOverrides = {
   '--stack-direction'?: CSSProperties['flexDirection'];

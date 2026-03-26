@@ -1,6 +1,6 @@
 //Components
 import { Header } from '../components/project/header/';
-import { staticHeaderData } from '@/components/project/header/headerData/staticHeaderData';
+import { staticHeaderData } from '@/components/project/header/header-data/staticHeaderData';
 //CSS
 import './globals.css';
 import './utilities.css';

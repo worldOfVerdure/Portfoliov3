@@ -14,6 +14,8 @@ Use `Stack` to replace repeated flex container classes for common layouts (colum
 - `section`
 - `ul`
 - `ol`
+- `li`
+- `a`
 - `nav`
 - `article`
 - `form`

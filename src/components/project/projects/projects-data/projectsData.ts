@@ -1,7 +1,7 @@
 //images
-import animatedD3JSImg from '@/assets/projectThumbnail/animatedD3JS.webp';
-import matchGameImg from '@/assets/projectThumbnail/matchGame.webp';
-import simpleTemplateImg from '@/assets/projectThumbnail/simpleTemplate.webp';
+import animatedD3JSImg from '@/assets/project-thumbnail/animated-d3js.webp';
+import matchGameImg from '@/assets/project-thumbnail/match-game.webp';
+import simpleTemplateImg from '@/assets/project-thumbnail/simple-template.webp';
 
 //types
 import type { StaticImageData } from 'next/image';
@@ -27,9 +27,7 @@ export const projectsData: ProjectCardProps[] = [
     imgWidth: 7152,
     liveProject: 'https://simple-template-gamma.vercel.app/',
     github: 'https://github.com/worldOfVerdure/simpleTemplate',
-    description: `A design-sytem and template I designed, inspired by MUI's primitives like
-    Stack, Link and Button while using modular css to avoid JS style objects to minimize JS sent to
-    the client. Radix UI provides headless logic and accessibility.`
+    description: 'A design-sytem and template I designed, inspired by MUI\'s primitives with Radix UI for headless logic and accessibility.'
   },
   {
     projectTitle: 'Animated D3.js Graph',
@@ -39,9 +37,7 @@ export const projectsData: ProjectCardProps[] = [
     imgWidth: 6860,
     liveProject: 'https://animated-graph-simulation-d3.vercel.app/',
     github: 'https://github.com/worldOfVerdure/animatedGraphSimulationD3',
-    description: `A graph node simulation inspired by my passion for graph theory. Built with D3.js
-    and the HTML canvas element with responsiveness in mind by reducing the number of nodes based on
-    viewport size.`
+    description: 'Built with D3.js and the HTML canvas to animate nodes and edges moving in space.'
   },
   {
     projectTitle: 'Match Game',
@@ -51,8 +47,6 @@ export const projectsData: ProjectCardProps[] = [
     imgWidth: 7627,
     liveProject: 'https://worldofverdure.github.io/GameNMatch/',
     github: 'https://github.com/worldOfVerdure/GameNMatch',
-    description: `An example of the traditional HTML, CSS, and JS panoply. This match game uses the
-    setInterval and epoch time to manage the timer while rotate3d CSS function allows the cards to
-    flip. The number of cards that appear on the screen are dependent on the viewport size.`
+    description: 'A responsive card matching game built with HTML, CSS and JavaScript.'
   }
 ];
