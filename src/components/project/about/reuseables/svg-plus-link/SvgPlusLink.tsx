@@ -1,7 +1,7 @@
 
 //components
 import Image from 'next/image';
-import { Stack } from '@/components/primitives/stack';
+import { Stack } from '@/components/primitives/stack/Stack';
 //types
 import type { LinkData } from './about-link-data/svgPlusLinkData';
  

@@ -1,6 +1,6 @@
 //components
-import { Button } from '@/components/primitives/button';
-import { Stack } from '@/components/primitives/stack';
+import { Button } from '@/components/primitives/button/Button';
+import { Stack } from '@/components/primitives/stack/Stack';
 import { SvgPlusLink } from './reuseables/svg-plus-link';
 //data
 import { codeLinkData, workLinkData } from './reuseables/svg-plus-link';

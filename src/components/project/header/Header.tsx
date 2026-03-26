@@ -1,7 +1,7 @@
 'use client';
 
-import { Link } from '@/components/primitives/link';
-import { Stack } from '@/components/primitives/stack';
+import { Link } from '@/components/primitives/link/Link';
+import { Stack } from '@/components/primitives/stack/Stack';
 import styles from '../header/styles/header.module.css';
 import { useEffect, useRef, useState } from 'react';
 

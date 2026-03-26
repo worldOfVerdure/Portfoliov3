@@ -1,10 +1,10 @@
 //components
-import { Link } from '@/components/primitives/link';
-import { Stack } from '@/components/primitives/stack';
-//css
-import styles from './styles/Hero.module.css';
+import { Link } from '@/components/primitives/link/Link';
+import { Stack } from '@/components/primitives/stack/Stack';
 //icons
 import { ChevronDownIcon } from '@radix-ui/react-icons';
+//styles
+import styles from './styles/Hero.module.css';
 
 export const Hero = () => {
   return (

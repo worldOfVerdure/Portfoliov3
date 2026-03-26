@@ -3,8 +3,8 @@
 import { breakpoints } from '@/lib/breakpoints';
 //components
 import Image from 'next/image';
-import { Link } from '@/components/primitives/link';
-import { Stack } from '@/components/primitives/stack';
+import { Link } from '@/components/primitives/link/Link';
+import { Stack } from '@/components/primitives/stack/Stack';
 //hooks
 import { useBreakpointUp } from '@/lib/useMediaQuery';
 //styles
