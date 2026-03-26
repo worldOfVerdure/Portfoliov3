@@ -22,7 +22,7 @@ export const Hero = () => {
         data-nav-theme="dark"
         data-nav-sentinel
       />
-      <Stack className={styles.heroStack} gap="var(--space-5)" >
+      <Stack className={styles.heroStack} >
         <h1 className={`${styles.heroH1} font-header text-center`}>
           I&apos;m <span className={styles.heroH1Name}>Andrew Chupka</span>
         </h1>

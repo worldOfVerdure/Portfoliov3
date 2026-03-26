@@ -1,7 +1,3 @@
-.projectsH3 {
-  font-size: var(--font-size-3);
-}
-
 .projectImageContainer {
   background-color: #009dbe;
   padding: var(--space-2) var(--space-4);
@@ -13,7 +9,6 @@
 .projectImageContainer:hover {
   transform: scale(1.02);
 }
-
 
 .projectImg {
   display: block;
@@ -28,7 +23,6 @@
 }
 
 .projectDescription {
-  font-size: var(--text-body);
   width: 85%;
 }
 

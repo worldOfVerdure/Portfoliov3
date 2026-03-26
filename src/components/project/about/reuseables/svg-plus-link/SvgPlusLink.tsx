@@ -15,7 +15,7 @@ export const SvgPlusLink = ({
 }: LinkData) => {
   return (
     <li>
-      <Stack as="a" direction="row" href={linkHref} >
+      <Stack as="a" direction="row" gap="var(--space-1)" href={linkHref} >
         <Image alt={alt} height={svgHeight} src={svgSrc} width={svgWidth} />
         <p>{linkText}</p>
       </Stack>

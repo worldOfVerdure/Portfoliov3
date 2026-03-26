@@ -1,0 +1,23 @@
+.aboutMeText {
+  width: 95%;
+}
+
+.learnMoreContainer {
+  width: fit-content;
+}
+
+.learnMoreh3 {
+  align-self: flex-start;
+}
+
+@media (--bp-up-md) {
+  .aboutMeText {
+    width: 80%;
+  }
+}
+
+@media (--bp-up-lg) {
+  .aboutMeText {
+    width: 65%;
+  }
+}

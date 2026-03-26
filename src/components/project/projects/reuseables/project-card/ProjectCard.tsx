@@ -5,10 +5,10 @@ import { breakpoints } from '@/lib/breakpoints';
 import Image from 'next/image';
 import { Link } from '@/components/primitives/link';
 import { Stack } from '@/components/primitives/stack';
-//css
-import styles from './styles/projectCard.module.css';
 //hooks
 import { useBreakpointUp } from '@/lib/useMediaQuery';
+//styles
+import styles from './styles/projectCard.module.css';
 //types
 import type { ProjectCardProps } from '../../projects-data/projectsData';
 
@@ -44,7 +44,7 @@ export const ProjectCard = ({
             />
           </Link>
           <Stack align="center" className={styles.projectActionsContainer} gap="var(--space-4)" >
-            <h3 className={`${styles.projectsH3} full-width text-center`}>{projectTitle}</h3>
+            <h3 className="full-width text-center">{projectTitle}</h3>
             <p className={`${styles.projectDescription} text-center`}>{description}</p>
             <Stack direction="row" gap="var(--space-5)" >
               <Link

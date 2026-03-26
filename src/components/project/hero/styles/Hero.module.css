@@ -28,12 +28,12 @@
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
+  width: 100%;
 }
 
 .heroH1, .heroH2 {
   color: #f7f8fa;
-  font-size: clamp(2.4rem, 2.26rem + 0.8vw, 2.7rem);
+  font-size: clamp(2.3rem, 2.06rem + 0.8vw, 2.7rem);
   opacity: 1;
   transform: translateX(0);
   transition: transform 1.6s ease, opacity 1.6s ease-in;
@@ -98,10 +98,13 @@
 }
 
 @media (--bp-up-xs) {
-  .heroStack {
-    width: 80%;
+  .heroH1,
+  .heroH2 {
+    font-size: var(--text-heading);
   }
+}
 
+@media (--bp-up-sm) {
   .heroH1,
   .heroH2 {
     font-size: var(--text-display);
