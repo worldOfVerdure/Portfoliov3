@@ -19,8 +19,8 @@ export const About = () => {
         <div>
           <p>I believe in the importance of self-learning, in all phases of life. Web development
             excites me because technology is accessible to anyone with a computer and an internet
-            connection. I am thankful that there is always more to learn and learning immediately
-            translates to an improved web experience for devleoper and client. When I am away from
+            connection. I am thankful that there is always more to learn and that learning immediately
+            translates to an improved web experience for developer and client. When I am away from
             the computer, I like to stay fit, be out in nature and spend time with my affectionate
             cat <span>&#x1F408;</span>.
           </p>
