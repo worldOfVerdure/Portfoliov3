@@ -1,8 +1,8 @@
  //components
 import { Stack } from '@/components/primitives/stack';
-import { SvgPlusLink } from './reuseables/about-link';
+import { SvgPlusLink } from './reuseables/svg-plus-link';
 //data
-import { codeLinkData, workLinkData } from './reuseables/about-link/';
+import { codeLinkData, workLinkData } from './reuseables/svg-plus-link';
 
 export const About = () => {
   return (
