@@ -10,7 +10,7 @@ import {
   FormBehaviorRulebook,
   FormValidationMessages,
   RulebookGetValidationMessageArgs
-} from '@/components/elevated/form/helpers/types';
+} from '../helpers/types';
 
 const scriptTagPattern = /<\s*script\b/i;
 const htmlTagPattern = /<\s*\/?\s*[a-z][^>]*>/i;
