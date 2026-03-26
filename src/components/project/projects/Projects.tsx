@@ -1,7 +1,7 @@
 'use client';
 //components
 import { ProjectCard } from './reuseables/project-card/ProjectCard';
-import { Stack } from '@/components/primitives/stack/Stack';
+import { Stack } from '@/components/primitives/Stack/Stack';
 //css
 import styles from './styles/projects.module.css';
 //data

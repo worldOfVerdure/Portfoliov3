@@ -1,6 +1,6 @@
 //components
-import { Link } from '@/components/primitives/link/Link';
-import { Stack } from '@/components/primitives/stack/Stack';
+import { Link } from '@/components/primitives/Link/Link';
+import { Stack } from '@/components/primitives/Stack/Stack';
 //icons
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 //styles
