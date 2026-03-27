@@ -17,7 +17,15 @@
 }
 
 .webdevList {
-  align-self: flex-start;
+  align-self: stretch;
+}
+
+.resumeButtonLabel {
+  font-family: var(--font-family-body);
+}
+
+.aboutWorkCall {
+  width: 100%;
 }
 
 @media (--bp-up-md) {

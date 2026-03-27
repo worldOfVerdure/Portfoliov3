@@ -32,13 +32,27 @@ export const About = () => {
             <h3 className={styles.learnMoreh3}>Learn More:</h3>
             <Stack className={styles.actionsContainer} >
               <p>About my web dev experience:</p>
-              <Stack as="ul" className={styles.webdevList} direction="row" gap="var(--space-5)" ><SvgPlusLink {...codeLinkData} /></Stack>
+              <Stack
+                as="ul"
+                className={styles.webdevList}
+                direction="row"
+                gap="var(--space-5)"
+              >
+                <SvgPlusLink {...codeLinkData} />
+              </Stack>
             </Stack>
             <Stack className={styles.actionsContainer} >
-              <p>About my work history:</p>
+              <p className={styles.aboutWorkCall}>About my work history:</p>
               <Stack as="ul" direction="row" gap="var(--space-5)" >
                 <SvgPlusLink {...workLinkData} />
-                <li><Button variant="secondary" >Download Resume</Button></li>
+                <li>
+                  <Button
+                    variant="secondary"
+                    classes={{ label: styles.resumeButtonLabel }}
+                  >
+                    Download Resume
+                  </Button>
+                </li>
               </Stack>
             </Stack>
           </Stack>

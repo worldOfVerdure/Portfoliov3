@@ -16,10 +16,14 @@ export const SvgPlusLink = ({
   svgWidth
 }: LinkData) => {
   return (
-    <li className={styles.liContainer} >
-      <Link className={`${styles.link} flex full-width`} href={linkHref} >
+    <li>
+      <Link
+        className={styles.link}
+        classes={{ label: styles.linkLabel }}
+        href={linkHref}
+      >
         <Image alt={alt} height={svgHeight} src={svgSrc} width={svgWidth} />
-        <p>{linkText}</p>
+        <span className={styles.linkText}>{linkText}</span>
       </Link>
     </li>
   );
