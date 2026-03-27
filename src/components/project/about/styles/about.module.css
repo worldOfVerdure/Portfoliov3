@@ -1,12 +1,22 @@
 .aboutMeText {
+  text-align: left;
+  text-indent: 2rem;
   width: 95%;
 }
 
 .learnMoreContainer {
-  width: fit-content;
+  width: 95%;
 }
 
 .learnMoreh3 {
+  align-self: flex-start;
+}
+
+.actionsContainer {
+  margin-left: 1rem;
+}
+
+.webdevList {
   align-self: flex-start;
 }
 
