@@ -47,8 +47,11 @@ export const About = () => {
                 <SvgPlusLink {...workLinkData} />
                 <li>
                   <Button
-                    variant="secondary"
                     classes={{ label: styles.resumeButtonLabel }}
+                    className={styles.resumeBtn}
+                    size="sm"
+                    type="button"
+                    variant="secondary"
                   >
                     Download Resume
                   </Button>

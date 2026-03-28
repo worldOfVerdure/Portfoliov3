@@ -13,15 +13,15 @@
 }
 
 .linkText {
+  font-size: var(--text-caption);
   position: relative;
-  padding-bottom: 2px;
 }
 
 .linkText::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -2px;
   width: 100%;
   height: 1px;
   background: currentColor;
@@ -32,6 +32,12 @@
 
 .link:focus-visible .linkText::after {
   transform: scaleX(1);
+}
+
+@media (--bp-up-xs) {
+  .linkText {
+    font-size: var(--text-body );
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {

@@ -22,20 +22,35 @@
 
 .resumeButtonLabel {
   font-family: var(--font-family-body);
+  font-size: var(--text-caption);
 }
 
 .aboutWorkCall {
   width: 100%;
 }
 
+.resumeBtn {
+  transition: transform 0.3s ease-in-out;
+}
+
+.resumeBtn:hover {
+  transform: scale(1.05);
+}
+
+@media (--bp-up-xs) {
+  .resumeButtonLabel {
+    font-size: var(--text-body );
+  }
+}
+
 @media (--bp-up-md) {
   .aboutMeText {
-    width: 80%;
+    width: 70%;
   }
 }
 
 @media (--bp-up-lg) {
   .aboutMeText {
-    width: 65%;
+    width: 60%;
   }
 }

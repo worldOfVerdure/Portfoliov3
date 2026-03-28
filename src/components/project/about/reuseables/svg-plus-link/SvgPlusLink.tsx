@@ -18,8 +18,8 @@ export const SvgPlusLink = ({
   return (
     <li>
       <Link
-        className={styles.link}
         classes={{ label: styles.linkLabel }}
+        className={styles.link}
         href={linkHref}
       >
         <Image alt={alt} height={svgHeight} src={svgSrc} width={svgWidth} />
