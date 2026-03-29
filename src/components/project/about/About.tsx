@@ -54,8 +54,6 @@ export const About = () => {
                   prefetch={false}
                   download
                   size="sm"
-                  rel="noopener noreferrer"
-                  target="_blank"
                   type="application/pdf"
                   variant="buttonSecondary"
                 >
