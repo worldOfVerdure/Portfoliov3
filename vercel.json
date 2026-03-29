@@ -1,4 +1,5 @@
 {
+  "framework": "nextjs",
   "headers": [
     {
       "source": "/andrew_chupka_resume.pdf",
