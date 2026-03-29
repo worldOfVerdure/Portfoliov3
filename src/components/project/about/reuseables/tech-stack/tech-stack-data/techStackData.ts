@@ -60,11 +60,11 @@ export const techStackData: TechStackData[][] = [
       width: 148
     },
     {
-      height: 2500,
+      height: 60,
       svgAlt: "Radix UI's logo.",
       svgSrc: radix,
       techText: "Radix",
-      width: 2500
+      width: 60
     },
     {
       height: 128,

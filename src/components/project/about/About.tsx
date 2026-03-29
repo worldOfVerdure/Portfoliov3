@@ -53,6 +53,8 @@ export const About = () => {
                   href="/andrew_chupka_resume.pdf"
                   download
                   size="sm"
+                  rel="noopener noreferrer"
+                  target="_blank"
                   type="button"
                   variant="buttonSecondary"
                 >
