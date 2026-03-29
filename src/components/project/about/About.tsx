@@ -50,7 +50,7 @@ export const About = () => {
                 <Link
                   classes={{ label: styles.resumeButtonLabel }}
                   className={styles.resumeBtn}
-                  href="/Andrew_Chupka_Resume.pdf"
+                  href="/andrew_chupka_resume.pdf"
                   download
                   size="sm"
                   type="button"
