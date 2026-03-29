@@ -51,6 +51,7 @@ export const About = () => {
                   classes={{ label: styles.resumeButtonLabel }}
                   className={styles.resumeBtn}
                   href="/andrew_chupka_resume.pdf"
+                  prefetch={false}
                   download
                   size="sm"
                   rel="noopener noreferrer"
