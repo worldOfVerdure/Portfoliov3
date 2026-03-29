@@ -1,8 +1,8 @@
 //components
-import { Button } from '@/components/primitives/Button/';
-import { Stack } from '@/components/primitives/Stack/';
+import { Link } from '@/components/primitives/Link';
+import { Stack } from '@/components/primitives/Stack';
 import { SvgPlusLink } from './reuseables/svg-plus-link';
-import { TechStack } from './reuseables/tech-stack/';
+import { TechStack } from './reuseables/tech-stack';
 //data
 import { codeLinkData, workLinkData } from './reuseables/svg-plus-link';
 //styles
@@ -47,15 +47,17 @@ export const About = () => {
             <Stack as="ul" direction="row" gap="var(--space-5)" >
               <SvgPlusLink {...workLinkData} />
               <li>
-                <Button
+                <Link
                   classes={{ label: styles.resumeButtonLabel }}
                   className={styles.resumeBtn}
+                  href="/Andrew_Chupka_Resume.pdf"
+                  download
                   size="sm"
                   type="button"
-                  variant="secondary"
+                  variant="buttonSecondary"
                 >
                   Download Resume
-                </Button>
+                </Link>
               </li>
             </Stack>
           </Stack>
