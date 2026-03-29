@@ -55,7 +55,7 @@ export const About = () => {
                   size="sm"
                   rel="noopener noreferrer"
                   target="_blank"
-                  type="button"
+                  type="application/pdf"
                   variant="buttonSecondary"
                 >
                   Download Resume
