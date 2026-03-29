@@ -1,5 +1,5 @@
 .projectImageContainer {
-  background-color: #009dbe;
+  background-color: var(--color-bg-depth);
   padding: var(--space-2) var(--space-4);
   max-width: 97%;
   text-decoration: none;
@@ -27,11 +27,15 @@
 }
 
 .projectLinkBtns {
-  transition: transform 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.projectLinkBtns:hover {
-  transform: scale(1.1);
+.projectLinkLiveBtn:hover, .projectLinkLiveBtn:focus-visible {
+  background-color: #1c1cf0;
+}
+
+.projectLinkGithubBtn:hover, .projectLinkGithubBtn:focus-visible {
+  background-color: #babec5;
 }
 
 @media (--bp-up-md) {

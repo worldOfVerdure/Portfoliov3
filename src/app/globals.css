@@ -2,6 +2,7 @@
   color-scheme: light;
 
   --color-bg: #00D4FF;
+  --color-bg-depth: #009dbe;
   --color-surface: #f7f8fa;
   --color-text: #020024;
   --color-text-muted: #475569;
@@ -25,8 +26,6 @@
   --radius-md: 0.8rem;
   --radius-lg: 1.2rem;
   --radius-xl: 1.6rem;
-
-  --container-max: 115.2rem;
 
   --font-family-header: var(--font-work-sans), "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-family-body: var(--font-noto-sans), "Segoe UI", Roboto, Helvetica, Arial, sans-serif;

@@ -1,15 +1,13 @@
 .aboutMeText {
+  margin-bottom: var(--space-4);
   text-align: left;
   text-indent: 2rem;
   width: 95%;
 }
 
 .learnMoreContainer {
+  align-items: flex-start;
   width: 95%;
-}
-
-.learnMoreh3 {
-  align-self: flex-start;
 }
 
 .actionsContainer {
@@ -30,11 +28,16 @@
 }
 
 .resumeBtn {
-  transition: transform 0.3s ease-in-out;
+  border-width: .2rem;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.resumeBtn:hover {
-  transform: scale(1.05);
+.resumeBtn:hover, .resumeBtn:focus-visible {
+  background-color: #babec5;
+}
+
+.techStackH3 {
+  margin-bottom: 1.2rem;
 }
 
 @media (--bp-up-xs) {
@@ -47,10 +50,16 @@
   .aboutMeText {
     width: 70%;
   }
+
+  .learnMoreContainer {
+    justify-content: center;
+    flex-direction: row;
+    gap: 12rem;
+  }
 }
 
 @media (--bp-up-lg) {
   .aboutMeText {
-    width: 60%;
+    width: 50%;
   }
 }

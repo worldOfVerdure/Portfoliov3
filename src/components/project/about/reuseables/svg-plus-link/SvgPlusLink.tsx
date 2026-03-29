@@ -22,7 +22,14 @@ export const SvgPlusLink = ({
         className={styles.link}
         href={linkHref}
       >
-        <Image alt={alt} height={svgHeight} src={svgSrc} width={svgWidth} />
+        <Image
+          alt={alt}
+          className={styles.socialLogo}
+          height={svgHeight}
+          src={svgSrc}
+          unoptimized
+          width={svgWidth}
+        />
         <span className={styles.linkText}>{linkText}</span>
       </Link>
     </li>

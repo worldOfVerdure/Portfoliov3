@@ -48,7 +48,7 @@ export const ProjectCard = ({
             <p className={`${styles.projectDescription} text-center`}>{description}</p>
             <Stack direction="row" gap="var(--space-5)" >
               <Link
-                className={styles.projectLinkBtns}
+                className={`${styles.projectLinkLiveBtn} ${styles.projectLinkBtns}`}
                 href={liveProject}
                 size="lg"
                 variant="buttonPrimary"
@@ -56,7 +56,7 @@ export const ProjectCard = ({
                 Live Project
               </Link>
               <Link
-                className={styles.projectLinkBtns}
+                className={`${styles.projectLinkGithubBtn} ${styles.projectLinkBtns}`}
                 href={github}
                 size="lg"
                 variant="buttonSecondary"
@@ -82,7 +82,7 @@ export const ProjectCard = ({
           </Link>
           <Stack direction="row" gap="var(--space-5)" >
             <Link
-              className={styles.projectLinkBtns}
+              className={`${styles.projectLinkLiveBtn} ${styles.projectLinkBtns}`}
               href={liveProject}
               size="lg"
               variant="buttonPrimary"
@@ -90,7 +90,7 @@ export const ProjectCard = ({
               Live Project
             </Link>
             <Link
-              className={styles.projectLinkBtns}
+              className={`${styles.projectLinkGithubBtn} ${styles.projectLinkBtns}`}
               href={github}
               size="lg"
               variant="buttonSecondary"

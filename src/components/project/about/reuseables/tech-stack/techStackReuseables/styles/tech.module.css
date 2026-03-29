@@ -1,0 +1,28 @@
+.techContainer {
+  min-width: 9rem;
+}
+
+.logo {
+  height: auto;
+  width: 3rem;
+}
+
+.techText {
+  font-size: var(--text-caption);
+}
+
+@media (--bp-up-xs) {
+  .techText {
+    font-size: var(--text-body);
+  }
+
+  .logo {
+    width: 5rem;
+  }
+}
+
+@media (--bp-up-sm) {
+  .logo {
+    width: 6rem;
+  }
+}

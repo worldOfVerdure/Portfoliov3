@@ -27,6 +27,6 @@ export const workLinkData: LinkData = {
   linkHref: 'https://www.linkedin.com/in/andrew-chupka/',
   linkText: 'LinkedIn',
   svgSrc: linkedinLogo,
-  svgHeight: 40,
-  svgWidth: 40
+  svgHeight: 64,
+  svgWidth: 64
 };
