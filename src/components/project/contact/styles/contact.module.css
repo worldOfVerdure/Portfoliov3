@@ -1,0 +1,12 @@
+.contactContainer {
+  background: #020024;
+  background: linear-gradient(
+    #00d4ff 0%,
+    #0061bb 20%,
+    #2442b0 40%,
+    #090979 60%,
+    #050550 80%,
+    #020024 100%
+  );
+  padding-bottom: var(--space-8);
+}

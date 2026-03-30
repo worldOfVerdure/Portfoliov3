@@ -2,12 +2,12 @@
 //components
 import { ProjectCard } from './reuseables/project-card/ProjectCard';
 import { Stack } from '@/components/primitives/Stack/Stack';
-//css
-import styles from './styles/projects.module.css';
 //data
 import { projectsData } from './projects-data/projectsData';
 //hooks
 import { useEffect } from 'react';
+//styles
+import styles from './styles/projects.module.css';
 //types
 import type { ProjectCardProps } from './projects-data/projectsData';
 
@@ -121,7 +121,7 @@ export const Projects = () => {
       <Stack as="ul" className={styles.cardContainer}>
         {projectsData.map((project: ProjectCardProps, index: number) => (
           <li
-            className={`${styles.cardAlignment} ${styles.liContainer}`}
+            className={`${styles.cardAlignment} full-width`}
             data-project-item
             key={project.projectTitle}
           >

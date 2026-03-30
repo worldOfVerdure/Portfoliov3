@@ -26,7 +26,7 @@ export const About = () => {
           connection. I am thankful that there is always more to learn and that learning immediately
           translates to an improved web experience for developers and clients. When I am away from
           the computer, I like to stay fit, be out in nature and spend time with my affectionate
-          cat <span>&#x1F408;</span>.
+          cat.
         </p>
         <Stack className={styles.learnMoreContainer} >
           <Stack align="flex-start" >

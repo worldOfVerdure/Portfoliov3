@@ -1,3 +1,4 @@
+//Form components & rulebook
 export {
   Fieldset,
   FormActions,
@@ -10,6 +11,8 @@ export {
 } from './primitives';
 
 export { EmailControl, TextControl, TelControl, TextareaControl } from './controls';
+
+export { invalidFocusValid, idleInvalidRule } from './rulebooks';
 
 export type {
   FormBehaviorRulebook,

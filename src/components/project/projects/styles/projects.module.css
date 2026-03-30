@@ -1,6 +1,7 @@
 .cardContainer {
   --stack-gap: 4rem;
 }
+
 /* Initial Prep */
 .cardAlignment[data-animate-ready='true']:not([data-animated='true']) {
   filter: saturate(0.8);
@@ -21,27 +22,15 @@
   transform: translateY(0) scale(1);
 }
 
-@media (--bp-up-sm) {
-  .cardAlignment:nth-child(odd) {
-    align-self: flex-start;
-    margin-left: 1rem;
-  }
-
-  .cardAlignment:nth-child(even) {
-    align-self: flex-end;
-    margin-right: 1rem;
-  }
-}
-
 @media (--bp-up-lg) {
    .cardAlignment:nth-child(odd) {
     align-self: center;
-    margin-left: 0;
+    padding-left: var(--space-6);
   }
 
   .cardAlignment:nth-child(even) {
     align-self: center;
-    margin-right: 0;
+    padding-right: var(--space-6);
   }
 
   .cardContainer {
