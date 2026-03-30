@@ -15,7 +15,7 @@ import {
   TextControl,
   TextareaControl,
   invalidFocusValid
-} from '../../elevated/form/index';
+} from '../../elevated/Form';
 //patterns
 import { namePattern } from './data/patterns';
 //validation messages
