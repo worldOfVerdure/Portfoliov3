@@ -9,11 +9,11 @@
   --color-border: #020024;
   --color-primary: #090979;
   --color-primary-contrast: #f30b0b;
-  --color-success: #09662b;
-  --color-success-focus: #099c3f;
-  --color-error: #cf0202;
-  --color-error-focus: #ee6d6d;
-  --color-info: #264ebd;
+  --color-success: #044d14;
+  --color-success-focus: #0eb44b;
+  --color-error: #9c1d1d;
+  --color-error-focus: #eb5555;
+  --color-info: #00D4FF;
   --color-focus: #f7f8fa;
 
   --space-1: 0.4rem;

@@ -28,11 +28,11 @@ export const Contact = () => {
   return (
     <section className={`${styles.contactContainer} full-width sectionContainer`} id="contact">
        <span
-        aria-hidden="true"
-        className="navSectionSentinel"
-        data-nav-active="#contact"
-        data-nav-theme="dark"
-        data-nav-sentinel
+         aria-hidden="true"
+         className="navSectionSentinel"
+         data-nav-active="#contact"
+         data-nav-theme="dark"
+         data-nav-sentinel
       />
       <h2 className="sectionH2">Contact Me</h2>
       
@@ -57,7 +57,7 @@ export const Contact = () => {
               <FormLabel fieldName="name">Name <RedAsterisk /></FormLabel>
               <FormMessage fieldName="name" />
             </FormFieldHeader>
-            <TextControl name="name" required autoComplete="name" pattern={namePattern} />
+            <TextControl autoComplete="name" name="name" pattern={namePattern} required />
           </FormField>
 
           <FormField name="email">
@@ -65,7 +65,7 @@ export const Contact = () => {
               <FormLabel fieldName="email">Email <RedAsterisk /></FormLabel>
               <FormMessage fieldName="email" />
             </FormFieldHeader>
-            <EmailControl name="email" required autoComplete="email" />
+            <EmailControl autoComplete="email" name="email" required />
           </FormField>
 
           <FormField name="message">
@@ -73,7 +73,7 @@ export const Contact = () => {
               <FormLabel fieldName="message">Message <RedAsterisk /></FormLabel>
               <FormMessage fieldName="message" />
             </FormFieldHeader>
-            <TextareaControl name="message" required minLength={10} />
+            <TextareaControl minLength={10} name="message" required />
           </FormField>
         </Fieldset>
         <FormActions>
@@ -81,9 +81,9 @@ export const Contact = () => {
             classes={{ label: formStyles.submitLabel }}
             className={formStyles.submit}
             size="lg"
-            variant="primary"
+            variant="ghost"
           >
-            Send message
+            Send Message
           </Button>
       </FormActions>
       </FormRoot>

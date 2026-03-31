@@ -1,6 +1,4 @@
 .form {
-  background-color: var(--color-bg);
-  border-radius: var(--radius-lg);
   border-style: none;
   display: grid;
   gap: var(--space-4);
@@ -11,6 +9,8 @@
 }
 
 .fieldset {
+   background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
   border-style: none;
   display: grid;
   gap: var(--space-4);
@@ -54,8 +54,8 @@
 
 .textarea {
   min-height: 12rem;
-  resize: vertical;
   line-height: var(--line-height-normal);
+  resize: vertical;
 }
 
 .control:focus-visible,
@@ -107,21 +107,35 @@
 .actions {
   display: flex;
   justify-content: flex-end;
+  margin-top: var(--space-4);
 }
 
 .submit {
+  border-color: var(--color-primary-contrast);
+  border-width: 2px;
   --btn-color: var(--color-primary-contrast);
-  --btn-border: none;
   min-width: 12rem;
+  position: relative;
   transition: background-color 0.3s ease-in-out;
-}
 
-.submit:hover {
-  background-color: #1c1cf0;
+  &::after {
+    box-shadow: 0 0 10px var(--color-primary-contrast), 0 0 30px var(--color-primary-contrast), 0 0 60px var(--color-primary-contrast);
+    content: "";
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity .8s ease;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    opacity: 1;
+  }
 }
 
 .submitLabel {
-  color: var(--color-surface);
+  color: var(--color-primary-contrast);
   font-family: var(--font-family-body);
-  font-size: var(--text-body);
+  font-size: var(--font-size-2);
 }
