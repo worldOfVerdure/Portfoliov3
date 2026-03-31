@@ -69,7 +69,7 @@ export const ProjectCard = ({
        :
         <Stack align="center" gap="var(--space-4)" >
           <h3 className={`${styles.projectsH3} full-width text-center`}>{projectTitle}</h3>
-          <p className={`${styles.projectDescription} text-center`}>{description}</p>
+          <p className={`${styles.projectDescription}`}>{description}</p>
           <Link className={styles.projectImageContainer} href={liveProject} unstyled>
             <Image
               alt={imgAlt}
