@@ -47,6 +47,6 @@ export const projectsData: ProjectCardProps[] = [
     imgWidth: 7627,
     liveProject: 'https://worldofverdure.github.io/GameNMatch/',
     github: 'https://github.com/worldOfVerdure/GameNMatch',
-    description: 'A responsive card matching game built with HTML, CSS and JavaScript.'
+    description: 'A responsive matching card game built with HTML, CSS and JavaScript.'
   }
 ];
