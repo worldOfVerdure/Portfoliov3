@@ -20,7 +20,7 @@ export const About = () => {
       />
       <h2 className="sectionH2">About Me</h2>
       <Stack>
-        <p className={`${styles.aboutMeText} text-center`} >
+        <p className={styles.aboutMeText} >
             I believe in the importance of learning during all phases of life. Web development
           excites me because technology and information is accessible to anyone with a computer and an internet
           connection. I am thankful that there is always more to learn and that learning immediately

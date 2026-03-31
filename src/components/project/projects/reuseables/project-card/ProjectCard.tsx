@@ -45,7 +45,7 @@ export const ProjectCard = ({
           </Link>
           <Stack align="center" className={styles.projectActionsContainer} gap="var(--space-4)" >
             <h3 className="full-width text-center">{projectTitle}</h3>
-            <p className={`${styles.projectDescription}`}>{description}</p>
+            <p className={`${styles.projectDescription} text-center`}>{description}</p>
             <Stack direction="row" gap="var(--space-5)" >
               <Link
                 className={`${styles.projectLinkLiveBtn} ${styles.projectLinkBtns}`}
@@ -69,7 +69,7 @@ export const ProjectCard = ({
        :
         <Stack align="center" gap="var(--space-4)" >
           <h3 className={`${styles.projectsH3} full-width text-center`}>{projectTitle}</h3>
-          <p className={`${styles.projectDescription}`}>{description}</p>
+          <p className={`${styles.projectDescription} text-center`}>{description}</p>
           <Link className={styles.projectImageContainer} href={liveProject} unstyled>
             <Image
               alt={imgAlt}
