@@ -9,6 +9,7 @@ const HTML_PATTERN = /<[^>]*>/;
 const SCRIPT_PATTERN = /<script[\s\S]*?>[\s\S]*?<\/script>/i;
 const RATE_LIMIT_MAX_REQUESTS = 3;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 type RateLimitResult = {
   success: boolean;
@@ -129,6 +130,10 @@ function applyInMemoryRateLimit(identifier: string): RateLimitResult {
 
 async function applyRateLimit(identifier: string): Promise<RateLimitResult> {
   if (contactRateLimit === null) {
+    if (IS_PRODUCTION) {
+      throw new Error('Contact rate limiter is not configured for production.');
+    }
+
     return applyInMemoryRateLimit(identifier);
   }
 
@@ -172,7 +177,13 @@ export async function POST(request: Request) {
   const message = String(body.message).trim();
   const ip = getClientIp(request);
   const identifier = `${ip}:${email.toLowerCase()}`;
-  const rateLimitResult = await applyRateLimit(identifier);
+  let rateLimitResult: RateLimitResult;
+
+  try {
+    rateLimitResult = await applyRateLimit(identifier);
+  } catch {
+    return NextResponse.json({ error: 'Server misconfiguration.' }, { status: 500 });
+  }
 
   if (!rateLimitResult.success) {
     const retryAfterSeconds = Math.max(

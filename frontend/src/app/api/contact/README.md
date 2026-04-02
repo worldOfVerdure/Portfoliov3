@@ -36,9 +36,9 @@ When these environment variables exist, the limiter uses Redis and works across 
 
 This is the correct production setup.
 
-### In-Memory Fallback
+### In-Memory Fallback (Non-Production Only)
 
-If Redis env vars are missing, the route falls back to an in-memory `Map`.
+If Redis env vars are missing, the route falls back to an in-memory `Map` only when `NODE_ENV` is not `production`.
 
 Important limitation:
 
@@ -46,7 +46,9 @@ Important limitation:
 - Counts reset on cold starts/redeploys
 - Not globally consistent across multiple serverless instances
 
-Use this for local development only.
+In production, missing Redis configuration returns `500 Server misconfiguration` to avoid a false sense of rate-limit protection.
+
+Use in-memory fallback for local development only.
 
 ## Notes
 

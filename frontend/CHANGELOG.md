@@ -5,6 +5,7 @@
 - Added app-level contact form rate limiting in src/app/api/contact/route.ts: maximum 3 messages per rolling 1-hour window per `<client-ip>:<email-lowercased>` identifier.
 - Added HTTP 429 handling with `Retry-After` response header when the contact rate limit is exceeded.
 - Integrated Redis-backed serverless-safe limiting via Upstash (`@upstash/ratelimit`, `@upstash/redis`) with automatic in-memory fallback when Upstash environment variables are not configured.
+- Hardened contact rate limiting behavior so production requires Upstash Redis configuration and returns `500 Server misconfiguration` instead of silently using in-memory fallback.
 - Added contact API documentation in src/app/api/contact/README.md describing policy, enforcement, storage modes, and production environment variable requirements.
 
 ## 2026-03-23
