@@ -11,12 +11,14 @@ import type { Metadata } from 'next';
 
 const notoSans = Noto_Sans({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
   variable: '--font-noto-sans'
 });
 
 const workSans = Work_Sans({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
   variable: '--font-work-sans'
 });

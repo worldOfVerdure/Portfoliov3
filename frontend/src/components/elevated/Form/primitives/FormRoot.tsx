@@ -23,10 +23,22 @@ export function FormRoot({
   children,
   ...props
 }: FormRootProps) {
+  const { onReset, ...rootProps } = props;
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [touchedFields, setTouchedFields] = useState<FormTouchedFields>({});
   const [errors, setErrors] = useState<FormErrors>({});
   const formId = useId().replace(/:/g, '');
+  const handleReset: NonNullable<FormRootProps['onReset']> = (event) => {
+    onReset?.(event);
+
+    if (event.defaultPrevented) {
+      return;
+    }
+
+    setFocusedField(null);
+    setTouchedFields({});
+    setErrors({});
+  };
   /*Populates the state context value with all necessary state and handlers, memoizing to prevent
   unnecessary re-renders of consuming components. Note that the handlers are defined inline here to
   have access to the form state setters, and are included in the memo dependencies to ensure they
@@ -75,7 +87,12 @@ export function FormRoot({
   return (
     <FormThemeContext value={themeValue}>
       <FormStateContext value={stateValue}>
-        <Form.Root className={cn(classes?.form, className)} style={{ ...tokens, ...style }} {...props}>
+        <Form.Root
+          className={cn(classes?.form, className)}
+          onReset={handleReset}
+          style={{ ...tokens, ...style }}
+          {...rootProps}
+        >
           {children}
         </Form.Root>
       </FormStateContext>

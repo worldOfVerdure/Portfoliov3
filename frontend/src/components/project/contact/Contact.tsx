@@ -1,4 +1,5 @@
 'use client';
+
 //components
 import { Button } from '@/components/primitives/Button';
 import { RedAsterisk } from './reuseables/red-asterisk';
@@ -16,15 +17,85 @@ import {
   TextareaControl,
   invalidFocusValid
 } from '../../elevated/Form';
+import { Stack } from '@/components/primitives/Stack';
+//handler
+import { type SubmitEventHandler, useState } from 'react';
 //patterns
-import { namePattern } from './data/patterns';
+import { namePattern } from './form-data/patterns';
 //validation messages
-import { validationMessages } from './data/validationMessages';
+import { validationMessages } from './form-data/validationMessages';
 //styles
 import formStyles from './styles/contactForm.module.css';
 import styles from './styles/contact.module.css';
 
+type SubmitState = {
+  status: 'success' | 'error';
+  message: string;
+};
+
+type ContactFormSubmitHandler = SubmitEventHandler<HTMLFormElement>;
+
 export const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitState, setSubmitState] = useState<SubmitState | null>(null);
+
+  const handleSubmit: ContactFormSubmitHandler = async (event) => {
+    event.preventDefault();
+
+    const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+    if (!apiBaseUrl) {
+      setSubmitState({
+        status: 'error',
+        message: 'Contact service is unavailable right now. Please try again later.'
+      });
+      return;
+    }
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      name: String(formData.get('name') ?? '').trim(),
+      email: String(formData.get('email') ?? '').trim(),
+      message: String(formData.get('message') ?? '').trim()
+    };
+
+    setIsSubmitting(true);
+    setSubmitState(null);
+
+    try {
+      const response = await fetch(`${apiBaseUrl}/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = (await response.json().catch(() => null)) as { error?: string; message?: string } | null;
+
+      if (!response.ok) {
+        setSubmitState({
+          status: 'error',
+          message: data?.error ?? 'Failed to send message. Please try again.'
+        });
+        return;
+      }
+
+      setSubmitState({
+        status: 'success',
+        message: data?.message ?? 'Message sent successfully.'
+      });
+      form.reset();
+    } catch {
+      setSubmitState({
+        status: 'error',
+        message: 'Failed to send message. Please try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className={`${styles.contactContainer} full-width sectionContainer`} id="contact">
        <span
@@ -48,6 +119,7 @@ export const Contact = () => {
           message: formStyles.message,
           actions: formStyles.actions
         }}
+        onSubmit={handleSubmit}
         rulebook={invalidFocusValid}
         validationMessages={validationMessages}
       >
@@ -76,16 +148,36 @@ export const Contact = () => {
             <TextareaControl minLength={10} name="message" required />
           </FormField>
         </Fieldset>
-        <FormActions>
-          <Button
-            classes={{ label: formStyles.submitLabel }}
-            className={formStyles.submit}
-            size="lg"
-            variant="ghost"
-          >
-            Send Message
-          </Button>
-      </FormActions>
+        <Stack align="flex-end" gap="none" >
+          <div className={formStyles.submitMessageSlot}>
+            <p
+              aria-live="polite"
+              className={formStyles.submitMessage}
+              role="status"
+              style={{
+                color:
+                  submitState?.status === 'success'
+                    ? 'var(--color-success)'
+                    : 'var(--color-error)',
+              }}
+            >
+              {submitState?.message ?? ''}
+            </p>
+          </div>
+          
+          <FormActions>
+            <Button
+              classes={{ label: formStyles.submitLabel }}
+              className={formStyles.submit}
+              disabled={isSubmitting}
+              size="lg"
+              type="submit"
+              variant="primary"
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </Button>
+          </FormActions>
+        </Stack>
       </FormRoot>
     </section>
   );

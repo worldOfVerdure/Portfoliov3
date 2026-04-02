@@ -27,6 +27,10 @@ const hasAutocompleteEnabled = (control: HTMLInputElement | HTMLTextAreaElement)
 
   return autocomplete !== 'off';
 };
+
+const isFormControl = (control: Element): control is HTMLInputElement | HTMLTextAreaElement =>
+  (control instanceof HTMLInputElement || control instanceof HTMLTextAreaElement) && control.name.length > 0;
+
 export const useControlValidationHandlers = (name: string) => {
   const {
     focusedField,
@@ -37,6 +41,31 @@ export const useControlValidationHandlers = (name: string) => {
     validationMessages,
     rulebook
   } = useFormState();
+
+  const syncTouchedControlErrors = (form: HTMLFormElement | null) => {
+    if (!form) {
+      return;
+    }
+
+    const controls = Array.from(form.elements).filter(isFormControl);
+
+    controls.forEach((control) => {
+      const fieldName = control.name;
+
+      if (!touchedFields[fieldName]) {
+        return;
+      }
+
+      setErrorWrapper(
+        fieldName,
+        rulebook.getValidationMessage({
+          fieldName,
+          control,
+          validationMessages
+        })
+      );
+    });
+  };
 
   const handleFocus = () => {
     setFocusedField(name);
@@ -64,6 +93,8 @@ export const useControlValidationHandlers = (name: string) => {
         validationMessages
       })
     );
+
+    syncTouchedControlErrors(event.currentTarget.form);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -89,6 +120,8 @@ export const useControlValidationHandlers = (name: string) => {
         validationMessages
       })
     );
+
+    syncTouchedControlErrors(control.form);
   };
   const handleInvalid = (event: InvalidEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setTouchedWrapper(name, true);

@@ -6,6 +6,7 @@ export type StackElement =
   | 'div'
   | 'ol'
   | 'ul'
+  | 'menu'
   | 'li'
   | 'a'
   | 'section'
