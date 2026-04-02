@@ -42,15 +42,6 @@ export const Contact = () => {
   const handleSubmit: ContactFormSubmitHandler = async (event) => {
     event.preventDefault();
 
-    const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-    if (!apiBaseUrl) {
-      setSubmitState({
-        status: 'error',
-        message: 'Contact service is unavailable right now. Please try again later.'
-      });
-      return;
-    }
-
     const form = event.currentTarget;
     const formData = new FormData(form);
     const payload = {
@@ -63,7 +54,7 @@ export const Contact = () => {
     setSubmitState(null);
 
     try {
-      const response = await fetch(`${apiBaseUrl}/contact`, {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

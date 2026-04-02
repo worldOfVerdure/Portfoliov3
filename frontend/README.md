@@ -24,12 +24,27 @@ npm install
 npm run dev
 ```
 
+Create a `.env.local` file in this directory for the contact route:
+
+```env
+RESEND_API_KEY=         # From your Resend dashboard
+CONTACT_EMAIL=          # The address that receives form submissions
+```
+
 ## Build
 
 ```bash
 npm run build
 npm run start
 ```
+
+## Contact API
+
+The contact form submits to the App Router route handler at `/api/contact`.
+
+- It runs server-side in Next.js, which Netlify deploys as a serverless function.
+- `RESEND_API_KEY` and `CONTACT_EMAIL` must be set in Netlify site environment variables for production.
+- `NEXT_PUBLIC_API_BASE_URL` is no longer required.
 
 ## Styling System
 
