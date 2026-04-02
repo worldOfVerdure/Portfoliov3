@@ -102,6 +102,16 @@ export const useControlValidationHandlers = (name: string) => {
     const inputType = (event.nativeEvent as InputEvent).inputType ?? null;
     const looksLikeAutofillEvent = !inputType && !isEmpty(control.value) && hasAutocompleteEnabled(control);
 
+    // Already-touched field re-autofilled: re-validate immediately since blur may not fire.
+    if (touchedFields[name] && looksLikeAutofillEvent) {
+      setErrorWrapper(
+        name,
+        rulebook.getValidationMessage({ fieldName: name, control, validationMessages })
+      );
+      syncTouchedControlErrors(control.form);
+      return;
+    }
+
     if (
       touchedFields[name] ||
       isEmpty(control.value) ||
