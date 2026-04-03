@@ -2,6 +2,7 @@
 
 import { Link } from '@/components/primitives/Link/Link';
 import { Stack } from '@/components/primitives/Stack/Stack';
+import { usePathname } from 'next/navigation';
 import styles from '../header/styles/header.module.css';
 import { useEffect, useRef, useState } from 'react';
 
@@ -15,9 +16,14 @@ type HeaderProps = {
 };
 
 export const Header = ({links}: HeaderProps) => {
+  const pathname = usePathname();
   const [navTheme, setNavTheme] = useState<'light' | 'dark'>('light');
-  const [activeHref, setActiveHref] = useState<string>('#home');
+  const [activeHref, setActiveHref] = useState<string>(pathname === '/' ? '#home' : '');
   const headerRef = useRef<HTMLElement | null>(null);
+
+  const isActiveLink = (linkHref: string) => {
+    return linkHref === activeHref || linkHref === `/${activeHref}`;
+  };
 
   useEffect(() => {
     const header = headerRef.current;
@@ -38,7 +44,7 @@ export const Header = ({links}: HeaderProps) => {
        upper edge with the lower edge of the header. */
       const headerBottomInDocument = window.scrollY + header.getBoundingClientRect().bottom;
       let resolvedTheme: 'light' | 'dark' = 'light';
-      let resolvedHref = '#home';
+      let resolvedHref = pathname === '/' ? '#home' : '';
 
       for (const sentinel of headerSentinels) {
         const sentinelTopInDocument = window.scrollY + sentinel.getBoundingClientRect().top;
@@ -88,7 +94,7 @@ export const Header = ({links}: HeaderProps) => {
       window.removeEventListener('resize', bindObserver);
       window.removeEventListener('resize', resolveNavState);
     };
-  }, []);
+  }, [pathname]);
 
   const navThemeClass = navTheme === 'light' ? styles.navLight : styles.navDark;
 
@@ -104,7 +110,7 @@ export const Header = ({links}: HeaderProps) => {
           {links.map(({ linkText, linkHref }) => (
             <li key={linkText}>
               <Link
-                aria-current={linkHref === activeHref ? 'location' : undefined}
+                aria-current={isActiveLink(linkHref) ? 'location' : undefined}
                 className={styles.links}
                 href={linkHref}
               >

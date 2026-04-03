@@ -88,7 +88,7 @@ export const Contact = () => {
   };
 
   return (
-    <section className={`${styles.contactContainer} full-width sectionContainer`} id="contact">
+    <section className={`${styles.contactContainer} full-width sectionContainer zero-margin`} id="contact">
        <span
          aria-hidden="true"
          className="navSectionSentinel"

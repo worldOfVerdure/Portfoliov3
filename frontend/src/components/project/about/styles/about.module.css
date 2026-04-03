@@ -23,10 +23,6 @@
   font-size: var(--text-caption);
 }
 
-.aboutWorkCall {
-  width: 100%;
-}
-
 .resumeBtn {
   border-width: .2rem;
   transition: background-color 0.3s ease-in-out;

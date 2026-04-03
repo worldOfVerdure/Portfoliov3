@@ -1,4 +1,3 @@
-import path from 'node:path';
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
@@ -6,8 +5,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   turbopack: {
-    root: path.resolve(__dirname)
-  }
+    root: process.cwd(),
+  },
 };
 
 export default nextConfig;

@@ -1,6 +1,6 @@
 .link {
   --link-bg: transparent;
-  --link-color: var(--color-text);
+  --link-color: var(--color-text-dark);
   --link-border: transparent;
   --link-radius: var(--radius-md);
   --link-px: 0;
@@ -108,7 +108,7 @@
 
 .buttonSecondary {
   --link-bg: var(--color-surface);
-  --link-color: var(--color-text);
+  --link-color: var(--color-text-dark);
   --link-border: var(--color-border);
   --link-decoration: none;
   --link-hover-decoration: none;

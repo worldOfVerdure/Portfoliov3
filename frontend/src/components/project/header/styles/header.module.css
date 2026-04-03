@@ -1,5 +1,5 @@
 .header {
-  --header-nav-text: var(--color-text);
+  --header-nav-text: var(--color-text-dark);
   --header-bg: #ffffff;
 
   background-color: var(--header-bg);

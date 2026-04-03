@@ -32,7 +32,7 @@ export const About = () => {
           <Stack align="flex-start" >
             <h3>Learn More:</h3>
             <Stack className={styles.actionsContainer} >
-              <p>About my web dev experience:</p>
+              <h4>About my web dev experience:</h4>
               <Stack
                 as="ul"
                 className={styles.webdevList}
@@ -43,7 +43,7 @@ export const About = () => {
             </Stack>
           </Stack>
           <Stack className={styles.actionsContainer} >
-            <p className={styles.aboutWorkCall}>About my work history:</p>
+            <h4 className="full-width">About my work history:</h4>
             <Stack as="ul" direction="row" gap="var(--space-5)" >
               <SvgPlusLink {...workLinkData} />
               <li>

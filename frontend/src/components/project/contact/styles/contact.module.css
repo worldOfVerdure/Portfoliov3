@@ -1,5 +1,5 @@
 .contactContainer {
   background: #020024;
   background: linear-gradient(#00d4ff 0%, #090979 75%, #020024 100%);
-  padding-bottom: var(--space-8);
+  padding-bottom: 8rem;
 }

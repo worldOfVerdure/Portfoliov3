@@ -2,9 +2,11 @@
   color-scheme: light;
 
   --color-bg: #00D4FF;
+  --color-bg-dark: #020024;
   --color-bg-depth: #009dbe;
   --color-surface: #f7f8fa;
-  --color-text: #020024;
+  --color-text-light: #f7f8fa;
+  --color-text-dark: #020024;
   --color-text-muted: #475569;
   --color-border: #020024;
   --color-primary: #090979;
@@ -53,7 +55,7 @@
 html,
 body {
   background: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-text-dark);
   font-family: var(--font-family-body);
   font-size: 1.6rem;
   text-rendering: optimizeLegibility;

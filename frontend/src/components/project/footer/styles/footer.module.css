@@ -1,0 +1,82 @@
+.footerContainer {
+  background-color: var(--color-bg-dark);
+  padding: var(--space-2) var(--space-4) var(--space-8) var(--space-4);
+}
+
+.missionPrivacyStack {
+  align-items: flex-start;
+  width: fit-content;
+}
+
+.author,
+.footerMission,
+.footerLinks,
+.footerDisclaimer {
+  padding-left: var(--space-2);
+}
+
+.footerH2,
+.footerMission,
+.footerDisclaimer,
+.footerPrivacyH3,
+.linkText {
+  color: var(--color-text-light);
+  text-align: left;
+  width: 100%;
+}
+
+.footerAuthorName,
+.footerPrivacyH3,
+.linkText {
+  font-size: var(--font-size-3);
+}
+
+.footerH2 {
+  font-size: var(--text-heading);
+  margin-bottom: var(--space-2);
+  text-decoration: underline;
+}
+
+.footerLogo {
+  height: auto;
+  border-radius: var(--radius-sm);
+  width: 5rem;
+}
+
+.footerAuthorName {
+  color: var(--color-primary-contrast);
+  text-align: left;
+  width: 100%;
+}
+
+.footerMission {
+  font-size: var(--text-caption);
+}
+
+.footerLogoLinks {
+  transition: transform 320ms ease;
+}
+
+.footerLogoLinks:hover {
+  transform: scale(1.1);
+}
+
+.footerDisclaimer {
+  font-style: italic;
+}
+
+.linkText {
+  width: fit-content;
+}
+
+@media (--bp-up-xs) {
+  .footerMission {
+    width: 60%;
+  }
+}
+
+@media (--bp-up-sm) {
+  .missionPrivacyStack {
+    flex-direction: row; 
+  }
+}

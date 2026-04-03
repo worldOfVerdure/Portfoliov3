@@ -51,13 +51,13 @@
 
 .secondary {
   --btn-bg: var(--color-surface);
-  --btn-color: var(--color-text);
+  --btn-color: var(--color-text-dark);
   --btn-border: var(--color-border);
 }
 
 .ghost {
   --btn-bg: transparent;
-  --btn-color: var(--color-text);
+  --btn-color: var(--color-text-dark);
   --btn-border: var(--color-border);
 }
 

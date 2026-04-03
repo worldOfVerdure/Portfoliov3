@@ -1,9 +1,12 @@
 'use client';
 
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
-import { CSSProperties, MouseEvent, ReactNode } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { CSSProperties, MouseEvent, ReactNode, useEffect } from 'react';
 import { cn } from '@/lib/cn';
 import styles from './Link.module.css';
+
+const PENDING_SCROLL_TARGET_KEY = 'pending-scroll-target';
 
 type LinkVariant = 'text' | 'buttonPrimary' | 'buttonSecondary' | 'buttonGhost';
 type LinkSize = 'none' | 'sm' | 'md' | 'lg' | 'compact-lg';
@@ -53,6 +56,8 @@ export function Link({
   unstyled = false,
   ...rest
 }: LinkProps) {
+  const pathname = usePathname();
+  const router = useRouter();
   const sizeClass = size === 'none' ? undefined : styles[size];
 
   const mergedStyle = {
@@ -60,16 +65,74 @@ export function Link({
     ...(vars ?? {})
   } as CSSProperties;
 
-  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    onClick?.(event);
-
-    if (event.defaultPrevented || typeof href !== 'string' || !href.startsWith('#')) {
+  useEffect(() => {
+    if (pathname !== '/') {
       return;
     }
 
-    const targetId = decodeURIComponent(href.slice(1));
+    const pendingTarget = window.sessionStorage.getItem(PENDING_SCROLL_TARGET_KEY);
+    const hashTarget = pendingTarget ?? decodeURIComponent(window.location.hash.slice(1));
+
+    if (!hashTarget) {
+      return;
+    }
+
+    let frameId = 0;
+
+    const scrollToTarget = (attempt = 0) => {
+      const target = document.getElementById(hashTarget);
+
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.replaceState(null, '', `/#${hashTarget}`);
+        window.sessionStorage.removeItem(PENDING_SCROLL_TARGET_KEY);
+        return;
+      }
+
+      if (attempt < 10) {
+        frameId = window.requestAnimationFrame(() => {
+          scrollToTarget(attempt + 1);
+        });
+      }
+    };
+
+    scrollToTarget();
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
+  }, [pathname]);
+
+  const getTargetId = (value: string) => {
+    if (value.startsWith('/#')) {
+      return decodeURIComponent(value.slice(2));
+    }
+
+    if (value.startsWith('#')) {
+      return decodeURIComponent(value.slice(1));
+    }
+
+    return '';
+  };
+
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    onClick?.(event);
+
+    if (event.defaultPrevented || typeof href !== 'string') {
+      return;
+    }
+
+    const targetId = getTargetId(href);
 
     if (!targetId) {
+      return;
+    }
+
+    if (href.startsWith('/#') && pathname !== '/') {
+      event.preventDefault();
+      window.sessionStorage.setItem(PENDING_SCROLL_TARGET_KEY, targetId);
+      router.push(`/#${targetId}`);
+      event.currentTarget.blur();
       return;
     }
 
@@ -82,8 +145,10 @@ export function Link({
     event.preventDefault();
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    if (window.location.hash !== href) {
-      window.history.replaceState(null, '', href);
+    const nextHash = pathname === '/' ? `/#${targetId}` : `#${targetId}`;
+
+    if (window.location.pathname + window.location.hash !== nextHash) {
+      window.history.replaceState(null, '', nextHash);
     }
 
     event.currentTarget.blur();

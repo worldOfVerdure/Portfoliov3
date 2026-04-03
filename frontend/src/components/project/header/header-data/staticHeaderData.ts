@@ -1,18 +1,18 @@
 export const staticHeaderData = [
   {
     linkText: 'Home',
-    linkHref: '#home'
+    linkHref: '/#home'
   },
   {
     linkText: 'Projects',
-    linkHref: '#projects'
+    linkHref: '/#projects'
   },
   {
     linkText: 'About',
-    linkHref: '#about'
+    linkHref: '/#about'
   },
   {
     linkText: 'Contact',
-    linkHref: '#contact'
+    linkHref: '/#contact'
   }
 ] as const;

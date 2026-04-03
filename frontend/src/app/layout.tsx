@@ -1,13 +1,15 @@
 //Components
+import { Footer } from '../components/project/footer/';
 import { Header } from '../components/project/header/';
-import { staticHeaderData } from '@/components/project/header/header-data/staticHeaderData';
-//CSS
-import './globals.css';
-import './utilities.css';
 //Fonts
 import { Noto_Sans, Work_Sans } from 'next/font/google';
+//data
+import { staticHeaderData } from '@/components/project/header/header-data/staticHeaderData';
 // MetaData
 import type { Metadata } from 'next';
+//styles
+import './globals.css';
+import './utilities.css';
 
 const notoSans = Noto_Sans({
   subsets: ['latin'],
@@ -43,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Header links={staticHeaderData} />
         {children}
+        <Footer />
       </body>
     </html>
   );
