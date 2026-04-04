@@ -25,27 +25,33 @@ const workSans = Work_Sans({
   variable: '--font-work-sans'
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
-  ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
-const SOCIAL_PREVIEW_IMAGE = `${SITE_URL}/social-preview.jpg`;
+const RAW_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
+  ?? process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ?? process.env.VERCEL_URL
+  ?? 'http://localhost:3000';
+
+const SITE_ORIGIN = (RAW_SITE_URL.startsWith('http') ? RAW_SITE_URL : `https://${RAW_SITE_URL}`)
+  .replace(/\/+$/, '');
+
+const SOCIAL_PREVIEW_IMAGE = new URL('/social-preview.jpg', SITE_ORIGIN).toString();
 
 export const metadata: Metadata = {
-  title: 'Andrew Chupka\'s Portfolio',
-  description: 'I am a fullstack developer who loves building responsive, performant websites. I have experience with React, Next.js, Express.js, and more. Check out my projects and get in touch!',
-  metadataBase: new URL(SITE_URL),
+  title: 'Andrew Chupka\'s Fullstack Developer Portfolio',
+  description: 'I am a fullstack developer who loves building responsive, performant websites. I have experience with React, Next.js, Express.js, and more. Get in touch!',
+  metadataBase: new URL(SITE_ORIGIN),
   alternates: {
-    canonical: SITE_URL,
+    canonical: SITE_ORIGIN,
   },
   robots: {
     index: true,
     follow: true,
   },
-  authors: [{ name: 'Andrew Chupka', url: SITE_URL }],
+  authors: [{ name: 'Andrew Chupka', url: SITE_ORIGIN }],
   openGraph: {
-    title: 'Andrew Chupka\'s Portfolio',
-    description: 'I am a fullstack developer who loves building responsive, performant websites. I have experience with React, Next.js, Express.js, and more. Check out my projects and get in touch!',
-    url: SITE_URL,
-    siteName: 'Andrew Chupka\'s Portfolio',
+    title: 'Andrew Chupka\'s Fullstack Developer Portfolio',
+    description: 'I am a fullstack developer who loves building responsive, performant websites. I have experience with React, Next.js, Express.js, and more. Get in touch!',
+    url: SITE_ORIGIN,
+    siteName: 'Andrew Chupka\'s Fullstack Developer Portfolio',
     type: 'website',
     images: [
       {
@@ -59,7 +65,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Andrew Chupka\'s Portfolio',
-    description: 'I am a fullstack developer who loves building responsive, performant websites. I have experience with React, Next.js, Express.js, and more. Check out my projects and get in touch!',
+    description: 'I am a fullstack developer who loves building responsive, performant websites. I have experience with React, Next.js, Express.js, and more. Get in touch!',
     images: [SOCIAL_PREVIEW_IMAGE]
   },
   icons: {
