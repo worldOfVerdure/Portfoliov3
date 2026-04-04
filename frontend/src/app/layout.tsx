@@ -25,32 +25,26 @@ const workSans = Work_Sans({
   variable: '--font-work-sans'
 });
 
-const RAW_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
-  ?? process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ?? process.env.VERCEL_URL
-  ?? 'http://localhost:3000';
-
-const SITE_ORIGIN = (RAW_SITE_URL.startsWith('http') ? RAW_SITE_URL : `https://${RAW_SITE_URL}`)
-  .replace(/\/+$/, '');
-
-const SOCIAL_PREVIEW_IMAGE = new URL('/social-preview.jpg', SITE_ORIGIN).toString();
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
+  ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+const SOCIAL_PREVIEW_IMAGE = `${SITE_URL}/social-preview.jpg`;
 
 export const metadata: Metadata = {
   title: 'Andrew Chupka\'s Fullstack Developer Portfolio',
   description: 'I am a fullstack developer who loves building responsive, performant websites. I have experience with React, Next.js, Express.js, and more. Get in touch!',
-  metadataBase: new URL(SITE_ORIGIN),
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: SITE_ORIGIN,
+    canonical: SITE_URL,
   },
   robots: {
     index: true,
     follow: true,
   },
-  authors: [{ name: 'Andrew Chupka', url: SITE_ORIGIN }],
+  authors: [{ name: 'Andrew Chupka', url: SITE_URL }],
   openGraph: {
     title: 'Andrew Chupka\'s Fullstack Developer Portfolio',
     description: 'I am a fullstack developer who loves building responsive, performant websites. I have experience with React, Next.js, Express.js, and more. Get in touch!',
-    url: SITE_ORIGIN,
+    url: SITE_URL,
     siteName: 'Andrew Chupka\'s Fullstack Developer Portfolio',
     type: 'website',
     images: [
