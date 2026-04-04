@@ -5,6 +5,7 @@
 
 .missionPrivacyStack {
   align-items: flex-start;
+  gap: var(--space-6);
   width: fit-content;
 }
 
@@ -77,6 +78,7 @@
 
 @media (--bp-up-sm) {
   .missionPrivacyStack {
-    flex-direction: row; 
+    flex-direction: row;
+    gap: 0rem;
   }
 }
