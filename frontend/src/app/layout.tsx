@@ -30,7 +30,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
 const SOCIAL_PREVIEW_IMAGE = `${SITE_URL}/social-preview.jpg`;
 
 export const metadata: Metadata = {
-  title: 'Andrew Chupka\'s Fullstack Developer Portfolio',
+  title: 'Andrew Chupka | Full-Stack Web Developer Portfolio',
   description: 'I am a fullstack developer who loves building responsive, performant websites. I have experience with React, Next.js, Express.js, and more. Get in touch!',
   metadataBase: new URL(SITE_URL),
   alternates: {
@@ -42,23 +42,23 @@ export const metadata: Metadata = {
   },
   authors: [{ name: 'Andrew Chupka', url: SITE_URL }],
   openGraph: {
-    title: 'Andrew Chupka\'s Fullstack Developer Portfolio',
+    title: 'Andrew Chupka | Full-Stack Web Developer Portfolio',
     description: 'I am a fullstack developer who loves building responsive, performant websites. I have experience with React, Next.js, Express.js, and more. Get in touch!',
     url: SITE_URL,
-    siteName: 'Andrew Chupka\'s Fullstack Developer Portfolio',
+    siteName: 'Andrew Chupka | Full-Stack Web Developer Portfolio',
     type: 'website',
     images: [
       {
         url: SOCIAL_PREVIEW_IMAGE,
         width: 1200,
         height: 630,
-        alt: 'Andrew Chupka\'s portfolio hero preview'
+        alt: 'Andrew Chupka | Full-Stack Web Developer Portfolio hero preview'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Andrew Chupka\'s Portfolio',
+    title: 'Andrew Chupka | Full-Stack Web Developer Portfolio',
     description: 'I am a fullstack developer who loves building responsive, performant websites. I have experience with React, Next.js, Express.js, and more. Get in touch!',
     images: [SOCIAL_PREVIEW_IMAGE]
   },
