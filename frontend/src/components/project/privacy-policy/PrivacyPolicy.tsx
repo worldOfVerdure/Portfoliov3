@@ -15,7 +15,7 @@ export const PrivacyPolicy = () => {
       <div className={styles.policyShell}>
         <header className={styles.header}>
           <h1 className={styles.title}>Privacy Policy</h1>
-          <p className={styles.updated}>Last updated: Feb. 13, 2025</p>
+          <p className={styles.updated}>Last updated: Apr. 3, 2026</p>
           <p className={styles.lead}>
             This Privacy Policy explains how Andrew Chupka (&quot;I&quot;, &quot;me&quot;, &quot;my&quot;) collects,
             uses, and protects your personal information when you visit my website or interact

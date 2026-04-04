@@ -25,7 +25,8 @@ const workSans = Work_Sans({
   variable: '--font-work-sans'
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
+  ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
 const SOCIAL_PREVIEW_IMAGE = '/social-preview.jpg';
 
 export const metadata: Metadata = {
