@@ -27,7 +27,7 @@ const workSans = Work_Sans({
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
   ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
-const SOCIAL_PREVIEW_IMAGE = '/social-preview.jpg';
+const SOCIAL_PREVIEW_IMAGE = `${SITE_URL}/social-preview.jpg`;
 
 export const metadata: Metadata = {
   title: 'Andrew Chupka\'s Portfolio',
