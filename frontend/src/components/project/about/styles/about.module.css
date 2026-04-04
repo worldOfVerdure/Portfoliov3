@@ -9,6 +9,23 @@
   align-items: flex-start;
   width: 95%;
 }
+/* Initial Prep */
+.aboutItemAnimation {
+  filter: saturate(0.8);
+  opacity: 0;
+}
+
+.aboutItemAnimation[data-animate-ready='true'] {
+  transition-delay: var(--project-stagger, 0ms);
+  transition-duration: 1.55s, 1.45s;
+  transition-property: opacity, filter;
+  transition-timing-function: ease, ease;
+}
+
+.aboutItemAnimation[data-animated='true'] {
+  filter: none;
+  opacity: 1;
+}
 
 .actionsContainer {
   margin-left: 1rem;
