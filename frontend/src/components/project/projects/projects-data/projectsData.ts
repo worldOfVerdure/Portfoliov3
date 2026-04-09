@@ -27,7 +27,7 @@ export const projectsData: ProjectCardProps[] = [
     imgWidth: 7152,
     liveProject: 'https://simple-template-gamma.vercel.app/',
     github: 'https://github.com/worldOfVerdure/simpleTemplate',
-    description: 'A design-sytem and template I designed, inspired by MUI\'s primitives with Radix UI for headless logic and accessibility.'
+    description: 'A design-sytem and template I built, inspired by MUI\'s primitives with Radix UI for headless logic and accessibility.'
   },
   {
     projectTitle: 'Animated D3.js Graph',

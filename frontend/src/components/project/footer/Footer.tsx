@@ -18,8 +18,10 @@ export const Footer = () => {
             <img
               alt="Mushroom with antlers. Site's logo."
               className={styles.footerLogo}
+              height={2048}
               loading="lazy"
               src={mushroomAntler.src}
+              width={2048}
             />
             <h3 className={styles.footerAuthorName} >Andrew Chupka</h3>
           </Stack>
@@ -31,8 +33,10 @@ export const Footer = () => {
                 <img
                   alt="GitHub icon that links to Andrew Chupka's GitHub repositories."
                   className={styles.footerLogo}
+                  height={800}
                   loading="lazy"
                   src={githubIcon.src}
+                  width={800}
                 />
               </Link>
             </li>
@@ -41,8 +45,10 @@ export const Footer = () => {
                 <img
                   alt="LinkedIn icon that links to Andrew Chupka's LinkedIn profile."
                   className={styles.footerLogo}
+                  height={800}
                   loading="lazy"
                   src={linkedinIcon.src}
+                  width={800}
                 />
               </Link>
             </li>

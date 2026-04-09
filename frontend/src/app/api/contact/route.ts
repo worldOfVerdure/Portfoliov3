@@ -143,7 +143,7 @@ async function applyRateLimit(identifier: string): Promise<RateLimitResult> {
     reset: result.reset,
   };
 }
-
+//*entry point for contact form submission API route. Validates input, applies rate limiting, and sends email using Resend.
 export async function POST(request: Request) {
   let body: ContactRequestBody;
 
