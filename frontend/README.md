@@ -1,93 +1,101 @@
-# Small Business Next Template
+# Portfolio
 
-A lean `Next.js + React + TypeScript + CSS Modules` starter for building small business websites with strong first-load performance.
+This repository is my personal portfolio application, built to show how I design, architect, and
+ship production-grade fullstack experiences.
 
-## Stack
+It is intentionally engineered as a real-world product, not a one-page demo. The codebase emphasizes
+maintainability, accessibility, performance, and clear component boundaries.
 
-- Next.js (App Router)
+## What This Project Demonstrates
+
+- End-to-end product thinking: from UX structure to deployment concerns.
+- Modern React architecture with App Router patterns in Next.js.
+- Type-safe component development in strict TypeScript.
+- Scalable styling using CSS Modules and global design tokens.
+- Server-side form handling and email delivery through a secure API route.
+
+## Tech Stack
+
+- Next.js 16 (App Router)
 - React 19
-- TypeScript (strict)
-- CSS Modules + global design tokens
+- TypeScript (strict mode)
+- CSS Modules + global CSS variables
+- Resend API for contact form email delivery
 
-## Performance Defaults
+## Core Areas
 
-- Minimal dependency baseline
-- Tokenized styling via CSS variables
-- Fluid typography using `clamp()`
-- No UI framework dependency in core
-- Compression and stripped `X-Powered-By` header in `next.config.ts`
+### UI and Component System
 
-## Run
+- Reusable primitives (Button, Link, Stack) with predictable override patterns.
+- Project sections split into focused feature components (Hero, About, Projects, Contact, Footer).
+- Composition-first approach that favors small, testable pieces over large monolithic components.
+
+### Styling and Responsiveness
+
+- Design tokens in global styles for spacing, typography, and color consistency.
+- Fluid typography and responsive layout behavior.
+- Shared breakpoint helpers for consistent responsive logic.
+
+### Contact Flow
+
+- Contact form posts to an App Router endpoint at /api/contact.
+- Validation and server-side processing happen in the backend route.
+- Email delivery is powered by Resend, with secrets stored in environment variables.
+
+## Performance and Quality Priorities
+
+- Lightweight dependency strategy.
+- Strict TypeScript for safer refactors.
+- App-level configuration focused on production readiness (compression and reduced header surface).
+- Component structure designed for long-term maintainability.
+
+## Run Locally
+
+1. Install dependencies:
 
 ```bash
 npm install
+```
+
+2. Create .env.local in this folder:
+
+```env
+RESEND_API_KEY=
+CONTACT_EMAIL=
+```
+
+3. Start development server:
+
+```bash
 npm run dev
 ```
 
-Create a `.env.local` file in this directory for the contact route:
-
-```env
-RESEND_API_KEY=         # From your Resend dashboard
-CONTACT_EMAIL=          # The address that receives form submissions
-```
-
-## Build
+## Production Build
 
 ```bash
 npm run build
 npm run start
 ```
 
-## Contact API
+## Why Employers Might Care
 
-The contact form submits to the App Router route handler at `/api/contact`.
+This portfolio is evidence of how I approach software beyond visuals:
 
-- It runs server-side in Next.js, which Netlify deploys as a serverless function.
-- `RESEND_API_KEY` and `CONTACT_EMAIL` must be set in Netlify site environment variables for production.
-- `NEXT_PUBLIC_API_BASE_URL` is no longer required.
+- I optimize for clarity and long-term maintainability.
+- I make deliberate tradeoffs between speed, DX, and runtime performance.
+- I treat accessibility, responsiveness, and code quality as core requirements.
+- I structure frontend code in a way that scales with product growth.
 
-## Styling System
+## Project Structure
 
-## Form Rulebook Docs
+- src/app: Next.js routes and global styles.
+- src/components/primitives: Foundational reusable UI components.
+- src/components/project: Portfolio feature sections.
+- src/components/elevated/Form: Structured form system and validation rulebooks.
+- src/lib: Shared utility and responsive helpers.
 
-- `src/components/test/testForm/rulebooks/README.md`
-- `src/components/test/anotherTestForm/rulebooks/README.md`
+## Contact
 
-### Global Tokens
-
-`src/app/globals.css` contains primitives and semantic typography tokens:
-
-- Color, spacing, radius, container width
-- Type scale (`--font-size-*`) with fluid values
-- Semantic text roles (`--text-body`, `--text-heading`, etc.)
-
-### Breakpoint Utilities
-
-`src/lib/breakpoints.ts` exports shared breakpoint constants and a media-query helper for JS logic.
-
-### Component Override Pattern
-
-`Button` demonstrates the reusable styling contract:
-
-- `className` for root-level overrides
-- `classes` for slot-level overrides
-- `vars` for CSS variable overrides
-- `variant` and `size` for common style changes
-- `unstyled` for full style ownership
-
-Example:
-
-```tsx
-<Button
-  variant="ghost"
-  className="myButton"
-  classes={{ label: "myButtonLabel" }}
-  vars={{ "--btn-border": "var(--color-primary)", "--btn-color": "var(--color-primary)" }}
->
-  Custom Button
-</Button>
-```
-
-## Suggested Package Strategy
-
-Keep this repo as `template-core`, then create optional packages for headless integrations (Radix wrappers) to avoid shipping unnecessary dependencies in every client site.
+If you are reviewing this repository as part of a hiring process, thank you for your time.
+I am always open to discussing implementation details, architecture decisions, and tradeoffs made in
+this project.
