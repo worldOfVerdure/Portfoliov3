@@ -54,6 +54,14 @@ export const Footer = () => {
             </li>
           </Stack>
           </nav>
+          <Link
+            classes={{label: styles.linkText}}
+            className={`${styles.linkText} ${styles.sourceCode}`}
+            href="https://github.com/worldOfVerdure/Portfoliov3/tree/main/frontend"
+            variant="text"
+          >
+            Site's Source Code
+          </Link>
           <small className={styles.footerDisclaimer} >© 2026 Andrew Chupka. All rights reserved.</small>
         </Stack>
         <div className={styles.privacyContainer} >

@@ -12,7 +12,8 @@
 .author,
 .footerMission,
 .footerLinks,
-.footerDisclaimer {
+.footerDisclaimer,
+.sourceCode {
   padding-left: var(--space-2);
 }
 
