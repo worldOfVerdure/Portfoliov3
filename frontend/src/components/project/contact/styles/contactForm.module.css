@@ -66,8 +66,8 @@
 
 .control[data-validation='focus'],
 .textarea[data-validation='focus'] {
-  border-color: var(--color-info);
-  outline: 2px solid var(--color-info);
+  border-color: var(--color-focus);
+  outline: 2px solid var(--color-focus);
   outline-offset: 1px;
 }
 

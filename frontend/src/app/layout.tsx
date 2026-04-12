@@ -1,11 +1,11 @@
-//Components
+//components
 import { Footer } from '../components/project/footer/';
 import { Header } from '../components/project/header/';
-//Fonts
+//fonts
 import { Noto_Sans, Work_Sans } from 'next/font/google';
 //data
 import { staticHeaderData } from '@/components/project/header/header-data/staticHeaderData';
-// MetaData
+//metaData
 import type { Metadata } from 'next';
 //styles
 import './globals.css';
